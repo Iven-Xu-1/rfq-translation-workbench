@@ -1,0 +1,13 @@
+* text=auto
+*.ps1 text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cmd text eol=lf
+*.png binary
+*.docx binary
+*.xlsx binary
+*.xlsm binary

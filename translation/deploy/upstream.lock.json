@@ -1,0 +1,10 @@
+{
+  "name": "PDFMathTranslate-next",
+  "repository": "https://github.com/PDFMathTranslate-next/PDFMathTranslate-next",
+  "commit": "3538a8195d8379fe3fb4a0117c88d15c5b7b5e89",
+  "distribution": "pdf2zh-next",
+  "version": "2.8.2",
+  "babeldoc_version": "0.5.24",
+  "license": "AGPL-3.0",
+  "integration": "fixed upstream install plus project-local runtime bootstrap"
+}

@@ -1,0 +1,40 @@
+D3 阶段七：公开安装装配说明
+
+一、必须复制的运行布局
+
+parameter_cards/
+  run_d3_generation.py
+  d3_pump_cards/
+    __init__.py
+    api675_extractor.py
+    centrifugal_datasheet_extractor.py
+    direct_extractor.py
+    docx_renderer.py
+    engine.py
+    pipeline.py
+    public_template.py
+
+templates/
+  pump_parameter_card.docx
+
+run_d3_generation.py 与 d3_pump_cards 必须保持同级。调用方工作目录不需要位于 parameter_cards。
+
+二、入口行为
+
+1. runner 根据自身文件位置加载同级 d3_pump_cards，不依赖当前工作目录或开发机 PYTHONPATH。
+2. 缺少 d3_pump_cards 时退出码为 2，并在标准错误输出单行结构化 JSON；不向普通用户输出完整 traceback。
+3. 模板通过 --template 显式传入；runner 不读取公司模板或开发机默认路径。
+
+三、公开候选来源
+
+机器可读候选清单：D3阶段六_公开候选清单.json。
+
+清单中的 runtime_copy_layouts 是复制布局合同；include_paths 是公开候选唯一来源。装配方应同时复制 runner、完整 d3_pump_cards 和公开模板，不得只复制入口脚本。
+
+四、发布前回归
+
+1. test_d3_public_install_runner.py：复制公开布局、清空 PYTHONPATH、从不同工作目录运行 --help 和完整合成处理。
+2. test_d3_translation_evidence.py：验证正文位号来源、禁止文件名回退、无标签译后值绑定和特殊解析器中文字段映射。
+3. public_release_audit.py：按机器清单检查公开候选、路径/密钥形态、危险文件和 DOCX 元数据。
+
+本说明不包含任何真实项目文件、正文、译文、位号或内部 denylist。

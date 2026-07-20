@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RFQ 翻译参数工作台</title>
+    <link rel="stylesheet" href="/static/styles.css?v=__RFQ_STATIC_VERSION__" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-workspace">跳到项目内容</a>
+    <main class="app-shell">
+      <aside id="utility-rail" class="utility-rail" aria-label="工作台工具栏">
+        <nav class="rail-nav" aria-label="工作台快捷入口">
+          <a class="rail-action is-current" href="#project-list" aria-label="转到项目列表">
+            <span aria-hidden="true">项目</span>
+          </a>
+          <button id="rail-import" class="rail-action" type="button" aria-label="导入询价文件夹" aria-controls="create-dialog">导入</button>
+        </nav>
+        <span id="runtime-indicator" class="rail-runtime" role="status" aria-live="polite">运行状态：—</span>
+      </aside>
+
+      <aside class="project-sidebar" aria-labelledby="project-sidebar-title">
+        <header class="brand-row">
+          <div>
+            <span class="eyebrow">RFQ 工作台</span>
+            <h2 id="project-sidebar-title" class="sidebar-title">项目队列</h2>
+          </div>
+        </header>
+
+        <button id="open-create-dialog" class="primary-action" type="button">导入询价文件夹</button>
+
+        <label class="search-field">
+          <span class="sr-only">搜索项目</span>
+          <input id="project-search" name="project_search" type="search" placeholder="搜索项目…" autocomplete="off" aria-label="搜索项目" />
+        </label>
+
+        <h3 class="sidebar-section-title" id="project-list-title">我的项目</h3>
+        <div id="project-list" class="project-list" aria-labelledby="project-list-title" aria-live="polite" tabindex="-1"></div>
+      </aside>
+
+      <section id="main-workspace" class="main-workspace" tabindex="-1">
+        <header class="project-header">
+          <div class="project-heading">
+            <p class="eyebrow">当前项目</p>
+            <div class="title-line">
+              <h1 id="project-title" data-testid="project-title">请选择项目</h1>
+              <span id="project-status" class="status-badge">未选择</span>
+            </div>
+            <p id="project-path" class="project-path">从左侧选择项目查看处理结果</p>
+          </div>
+          <div class="header-actions">
+            <button id="open-folder" class="secondary-action" type="button" aria-describedby="host-folder-note" disabled>打开文件夹</button>
+            <small id="host-folder-note" class="host-folder-note" hidden>局域网模式下请使用网页预览或下载。</small>
+          </div>
+        </header>
+
+        <dl id="workspace-overview" class="workspace-overview" aria-label="当前项目摘要">
+          <div class="overview-item overview-mode">
+            <dt>处理模式</dt>
+            <dd id="overview-mode">未选择</dd>
+          </div>
+          <div class="overview-item">
+            <dt>文件</dt>
+            <dd id="overview-files">—</dd>
+          </div>
+          <div id="overview-cards-item" class="overview-item">
+            <dt>参数卡片</dt>
+            <dd id="overview-cards">—</dd>
+          </div>
+          <div id="overview-review-item" class="overview-item">
+            <dt>待复核</dt>
+            <dd id="overview-review">—</dd>
+          </div>
+          <div class="overview-item overview-stage">
+            <dt>当前阶段</dt>
+            <dd id="overview-stage">未选择</dd>
+          </div>
+        </dl>
+
+        <nav id="project-tabs" class="tabs" role="tablist" aria-label="项目视图">
+          <button id="tab-files" role="tab" aria-controls="panel-files" aria-selected="true" tabindex="0" data-tab="files" type="button">文件与翻译</button>
+          <button id="tab-parameters" role="tab" aria-controls="panel-parameters" aria-selected="false" tabindex="-1" data-tab="parameters" type="button">泵参数卡片</button>
+          <button id="tab-review" role="tab" aria-controls="panel-review" aria-selected="false" tabindex="-1" data-tab="review" type="button">待复核</button>
+        </nav>
+
+        <p id="global-message" class="global-message" aria-live="polite"></p>
+
+        <section id="panel-files" class="tab-panel page-panel" role="tabpanel" aria-labelledby="tab-files" aria-hidden="false">
+          <div class="section-header">
+            <div>
+              <p id="files-section-eyebrow" class="eyebrow">文件与翻译</p>
+              <h2 id="files-section-title">已纳入翻译结果的文件</h2>
+            </div>
+          </div>
+          <section id="processing-progress" class="processing-progress-strip" aria-live="polite" hidden></section>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>原文件</th>
+                  <th>页数</th>
+                  <th>处理状态</th>
+                  <th>中文文件</th>
+                </tr>
+              </thead>
+              <tbody id="translation-file-list"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="panel-parameters" class="tab-panel parameter-workspace" role="tabpanel" aria-labelledby="tab-parameters" aria-hidden="false">
+          <aside class="tag-pane" data-testid="tag-pane">
+            <div class="pane-heading">
+              <h2>泵位号</h2>
+              <span id="tag-count" class="count-text">0</span>
+            </div>
+            <label class="search-field compact-search">
+              <span class="sr-only">搜索位号</span>
+              <input id="tag-search" name="tag_search" type="search" placeholder="搜索位号…" autocomplete="off" aria-label="搜索位号" />
+            </label>
+            <div id="tag-list" class="tag-list"></div>
+          </aside>
+
+          <section class="parameter-pane" data-testid="parameter-pane">
+            <div id="parameter-download-toolbar" class="parameter-download-toolbar" aria-label="参数卡片下载" hidden></div>
+            <div id="parameter-card-content" class="parameter-card-content">
+              <div class="empty-state">请选择包含处理结果的项目。</div>
+            </div>
+          </section>
+
+          <aside class="source-pane" data-testid="source-pane">
+            <div class="pane-heading">
+              <h2>来源定位</h2>
+            </div>
+            <div id="source-content" class="source-content">
+              <div class="empty-state">选择参数后查看来源。</div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="panel-review" class="tab-panel page-panel" role="tabpanel" aria-labelledby="tab-review" aria-hidden="true" hidden>
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">待复核</p>
+              <h2>需要人工确认的问题</h2>
+            </div>
+          </div>
+          <div id="issue-list" class="issue-list"></div>
+        </section>
+
+      </section>
+    </main>
+
+    <dialog id="create-dialog" class="create-dialog" aria-labelledby="create-dialog-title">
+      <form id="create-form" class="create-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">项目文件管理</p>
+            <h2 id="create-dialog-title">导入询价文件夹</h2>
+          </div>
+          <button id="close-create-dialog" class="text-button" type="button">关闭</button>
+        </div>
+
+        <label>
+          <span>项目名称</span>
+          <input id="project-name" name="project_name" maxlength="120" placeholder="选择文件夹后自动生成，可修改…" autocomplete="off" />
+        </label>
+
+        <fieldset class="workflow-mode-field">
+          <legend>处理类型</legend>
+          <label class="workflow-mode-option">
+            <input type="radio" name="workflow_mode" value="translation_and_cards" checked />
+            <span>
+              <strong>翻译并生成参数卡片</strong>
+              <small>生成中文翻译文件、泵参数卡片和参数报告。</small>
+            </span>
+          </label>
+          <label class="workflow-mode-option">
+            <input type="radio" name="workflow_mode" value="translation_only" />
+            <span>
+              <strong>仅翻译文件</strong>
+              <small>只生成中文翻译文件，不生成参数卡片和参数报告。</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="folder-upload-field">
+          <span>本地 RFQ 文件</span>
+          <input id="folder-files" class="sr-only" name="folder_files" type="file" webkitdirectory directory multiple aria-label="选择本地 RFQ 文件夹中的文件" tabindex="-1" />
+          <input id="loose-files" class="sr-only" name="loose_files" type="file" multiple aria-label="选择本地 RFQ 文件" tabindex="-1" />
+          <div class="folder-upload-actions">
+            <button id="browse-folder-button" class="folder-picker-button" type="button">选择文件夹</button>
+            <button id="browse-file-button" class="folder-picker-button" type="button">选择文件</button>
+          </div>
+          <small id="selected-folder-summary">尚未选择文件夹。</small>
+        </div>
+
+        <div class="upload-preview-shell">
+          <div class="download-group-title">
+            <span>待处理文件清单</span>
+            <span id="upload-file-count">0 个文件</span>
+          </div>
+          <div class="upload-filter-row">
+            <input id="upload-file-filter" name="upload_file_filter" type="search" placeholder="搜索文件名、路径或类型…" autocomplete="off" aria-label="搜索待处理文件" />
+            <span id="upload-filter-summary">显示 0 个文件</span>
+          </div>
+          <div class="upload-selector-toolbar" aria-label="上传文件选择工具">
+            <button id="select-all-upload-files" class="secondary-action mini" type="button">全选</button>
+            <button id="clear-upload-files" class="secondary-action mini" type="button">取消全选</button>
+            <button class="secondary-action mini" type="button" data-upload-select-type="pdf">选择 PDF</button>
+            <button class="secondary-action mini" type="button" data-upload-select-type="word">选择 Word</button>
+            <button class="secondary-action mini" type="button" data-upload-select-type="excel">选择 Excel</button>
+          </div>
+          <div class="table-scroll compact-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>选择</th>
+                  <th>文件名</th>
+                  <th>相对路径</th>
+                  <th>类型</th>
+                  <th>大小</th>
+                  <th>处理范围</th>
+                </tr>
+              </thead>
+              <tbody id="upload-preview-list">
+                <tr><td colspan="6">选择文件夹后显示文件清单。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+        <div class="dialog-actions">
+          <button id="cancel-create" class="secondary-action" type="button">取消</button>
+          <button id="start-processing" class="primary-action compact" type="submit" disabled>确认并开始处理</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title">
+      <div class="preview-shell">
+        <header class="preview-header">
+          <div>
+            <p id="preview-type" class="eyebrow">译文预览</p>
+            <h2 id="preview-title">文件预览</h2>
+          </div>
+          <div class="preview-header-actions">
+            <a id="preview-download" class="secondary-action" href="#">下载</a>
+            <button id="preview-close" class="text-button" type="button">关闭</button>
+          </div>
+        </header>
+        <div id="preview-notices" class="preview-notices" aria-live="polite"></div>
+        <div id="preview-content" class="preview-content" tabindex="0"></div>
+      </div>
+    </dialog>
+
+    <script src="/static/app.js?v=__RFQ_STATIC_VERSION__"></script>
+  </body>
+</html>

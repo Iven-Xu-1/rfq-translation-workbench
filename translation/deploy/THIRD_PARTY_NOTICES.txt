@@ -1,0 +1,22 @@
+PDFMathTranslate-next / pdf2zh-next
+Repository: https://github.com/PDFMathTranslate-next/PDFMathTranslate-next
+Pinned commit: 3538a8195d8379fe3fb4a0117c88d15c5b7b5e89
+License declared by upstream: AGPL-3.0
+
+B installs the fixed upstream package and applies project-owned runtime hooks from
+pdf_runtime. The upstream source tree and virtual environment are not vendored.
+
+Before company-wide or external deployment, the company must review AGPL-3.0
+obligations for the intended network-service and distribution model. This file is
+an engineering notice, not legal advice or a license approval.
+
+RapidOCR-ONNXRuntime
+Package: rapidocr-onnxruntime 1.4.4
+Project: https://github.com/RapidAI/RapidOCR
+License declared by package: Apache-2.0
+
+B uses RapidOCR locally to recognize scanned PDF page images and add an invisible
+text layer. OCR page images and intermediate searchable PDFs remain local and are
+deleted with the per-file temporary working directory. Company deployment must
+retain applicable notices and review model-file licenses as part of the runtime
+distribution approval.

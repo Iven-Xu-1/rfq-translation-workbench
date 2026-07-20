@@ -1,0 +1,713 @@
+{
+    "schema_version":  "k6-public-source-manifest-v1",
+    "status":  "public_release_candidate",
+    "publication_allowed":  true,
+    "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+    "source_history_included":  false,
+    "upstream_file_count":  78,
+    "internal_source_paths_exported":  false,
+    "files":  [
+                  {
+                      "public_path":  "app/deployment.env.example",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "cd97027167864ec178bb1c9ba1b67ffab2aee48bf5239b6bbae0cc837dfed47d",
+                      "size_bytes":  1130,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/requirements.txt",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "320ca9b07787dea28d9207c0fc9951a9d0ae7c4a98f935504c62204cfef20b90",
+                      "size_bytes":  105,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/__init__.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "7c95616c05cec8a6bd4ab5a602c4942a473895b049d9d67ad94efd3ebe87db66",
+                      "size_bytes":  58,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/app_logging.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "d722f88b3f50691d6a2dbe283f99b7d1075019d3f5aef5a637683124d71ae311",
+                      "size_bytes":  1056,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/archive_service.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "4a9e9ea584a7bd81dbd459369b9a510f6735c383d1bd87b694f455985abd2a91",
+                      "size_bytes":  2178,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/main.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "a033026920c787f2709d0db686c2d78251ca25e16bf6de6696ed1b6605f521e6",
+                      "size_bytes":  27981,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/models.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "14d54590de770932febc153042c1c113cbfe9fe3cb09118537be3b589713e654",
+                      "size_bytes":  7451,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/persistence.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "97e0b2149319300cd062ce506e450d60f510d89fed0200e58a38f253d03d37fb",
+                      "size_bytes":  1503,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/processing_service.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "bb5c27360372868b1375445fe52f275dbea9aecc35c419f5e1af74ea571faa56",
+                      "size_bytes":  74169,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/project_service.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "f702102d2cab506b56efa6ee3994a46e2b79e603fee3459ef9a72a5069f63f69",
+                      "size_bytes":  6479,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/result_service.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "13dbb5d8d640c437fa1939c3f147f612d38faf2e27b8836cdd9dc631015f481d",
+                      "size_bytes":  52483,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/runtime_config.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "d5ca436492e4e2a566f3eb1ee376e922aadaf0cd1d8295fabf8c51f7d914dbb8",
+                      "size_bytes":  7676,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/rfq_app/upload_service.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "dfd48d8bac66a0a979ef26b9aba2dc8075012c02907d2c0c02ec5163e29e12f4",
+                      "size_bytes":  5137,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/static/app.js",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "33fc65dc98c9968cf56a811f68ff64e8efddbbf64fca653054286a19138b6e2c",
+                      "size_bytes":  87122,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/static/index.html",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "a4dc3557fc58fe9cbb1c3a26f59a9e3b9e1c039a6aafe4a183d5364971560020",
+                      "size_bytes":  12410,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "app/static/styles.css",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "484e8fc7617f7773d58b2e7ceb4e31a44b7333c8785320674077f413da947f10",
+                      "size_bytes":  38849,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "docs/parameter_cards/public_install_layout.txt",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "ae393441790aa301229a86709c1b4a0a2a78545fb8e3d0ae0f88d8717ea80ee3",
+                      "size_bytes":  1665,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/__init__.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "647103dc99742d88c7ecdad5a41253105bc63f87cab4c3f2c29f45d0a2a236a3",
+                      "size_bytes":  207,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/api675_extractor.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "28c8aaf691cd7daef133065f888565cb27b41a701a9deb0b1afd5c7ad8136380",
+                      "size_bytes":  52734,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/centrifugal_datasheet_extractor.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "d1c9d6961161560fc586a338403dea719fa73732de764b651b51507c1052462f",
+                      "size_bytes":  25773,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/direct_extractor.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "54eec9e2841ac4f19eec3e1524006c4dd367da537061ab9b768ea897b7cf722e",
+                      "size_bytes":  62556,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/docx_renderer.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "e0ea3c0b28a39ee3aa66306607809b09941c166c3f3cc9f9121d1127e522fe76",
+                      "size_bytes":  14864,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/engine.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "c9779c5635e82b213cf97ac035890079729cd3c0e43463f11a3c775e764a89b5",
+                      "size_bytes":  33167,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/pipeline.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "5118ae3bf133c00afb75d5200fbb55ba0832dce86fb664af9d9a43cf7cf7ddea",
+                      "size_bytes":  13371,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/d3_pump_cards/public_template.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "5cb75db94a8389abf42ca9132297aed6b15914626b068667f82df0517bb26c0b",
+                      "size_bytes":  8069,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parameter_cards/run_d3_generation.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "fe62b591f24464c7d8fb6af7034fe0cc5682b63981da67d6abb7e8b9cad33ad2",
+                      "size_bytes":  2667,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "parsing/rfq_text_parser/__init__.py",
+                      "source_module":  "C",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "8c16a6d56221c726e78a78916007cea6c52980c61c1a47105606ba65441f290c",
+                      "size_bytes":  46,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "parsing/rfq_text_parser/parser.py",
+                      "source_module":  "C",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "8c4b455094aa956f3f5bb8736aad0461e50279361a2830d748313025106d6bfd",
+                      "size_bytes":  21047,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "pipeline/j_trial_pipeline.py",
+                      "source_module":  "J",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "eb3d0ae82879d10f9832d8b9d5cb57518fe9d24482003069346ed4baecb93816",
+                      "size_bytes":  129037,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact file whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/__init__.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "daeba110cf16cdac1a958760df7fa62e1b8dfdcf51be4be0a3c5cad775f6bc46",
+                      "size_bytes":  31,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/export_model.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "8c400202ab29bc77287cde1e13c0ab5fe53a924e7661988ffd89070d6c7349ca",
+                      "size_bytes":  15472,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/export_model_d3.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "f7b5632377c2a7a33d9a84e4204f9f895b3893522dc5c79ec472aa3f6031f32a",
+                      "size_bytes":  13984,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/run_export.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "1ac17bd39b9f78a1011819479b56b15f7db790cfe3d0d93f63d08b7436347867",
+                      "size_bytes":  489,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/run_export_d3.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "6c97c957137af152e07cdb8e7ac1f9bf4864ab322bf730aa04b046751d8a76c0",
+                      "size_bytes":  14919,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "reports/f_exporter/workbook.py",
+                      "source_module":  "F",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "5d14816a9f4a900e002c9c508fa2e9001949fe5ad1c3a04ef62111ee848e3680",
+                      "size_bytes":  5851,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "templates/pump_parameter_card.docx",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "0476ebe2569dfa58ee3a111c35772859d8e33885d84e3648396b7b42b3019fa6",
+                      "size_bytes":  38924,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "templates/来源权属声明.txt",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "ef4fb1e146dfe4a87130ee1571b74b389b96d82d64145593a678f5a5fe297f10",
+                      "size_bytes":  624,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "templates/模板字段说明.txt",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "20a5ecda29c1ab24bcfdd660a0c66e9bd8f922afe1bed536292731dc140ffa4f",
+                      "size_bytes":  1435,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/app/test_a15_clean_install.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "24c4d89221d2e4734efb9991df4e04729714d64ef9ef5c5f5558da1979b6ef1b",
+                      "size_bytes":  4858,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/app/test_a15_runtime_config.py",
+                      "source_module":  "A",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "f6ed330415b27e2b2db759bddea9f3917d2ac14aa9e832f84e52e956d0ebd4a9",
+                      "size_bytes":  5325,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/fixtures/parameter_cards/synthetic_regression/合成样例说明.txt",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "6c647f5febe7d5df674ff06577d1bc0fd31cc780db090aebba6fd1e859f3e3c7",
+                      "size_bytes":  615,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/fixtures/parameter_cards/synthetic_regression/系统数据/translation_segments.json",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "1240623fd8c69fb6d1f6cd38f258fe44d42ccc0f61c67fe19014e8b7f99c0db6",
+                      "size_bytes":  379,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/fixtures/parameter_cards/synthetic_regression/系统数据/文本解析结果/parsed_documents.json",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "8d0273d447887fdcd9ffb4a27103d3d3f5cc0e4718d366a90e0b8f8261c179e7",
+                      "size_bytes":  3090,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/generate_pipeline_evidence.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "ec38b8f5ababdb7fa8366bd7c1528438c3d48526d180c496f36ed009e955caa2",
+                      "size_bytes":  3172,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/generate_template_demo.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "bce96183619b3078b3d63611f8d8b265d8bf50468c90e6a94a342c409e45007e",
+                      "size_bytes":  2158,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_direct.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "c87f9cb6191586d36fc0b1193eebf3a8c6ecba8653584aab536c6a19bcc52730",
+                      "size_bytes":  20016,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_docx_renderer.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "5a93ef0c0db774af4bbe1c72724e923c7c2f59ed2b3037c34adb268ca96f0aab",
+                      "size_bytes":  6763,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_engine.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "1095e8411032727faf6bb5247134c178b427190b5a5e8e695bd7c55d3459d231",
+                      "size_bytes":  7556,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_public_generic_extractors.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "f7ccd91d38da901bea9fb80c798f2b5dbae14ba7cfac842846bf1374e4cb9c33",
+                      "size_bytes":  7769,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_public_install_runner.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "fae2e127c8951c4049117b7f1e227486a8a147c8a068bedcb3ff0b8b904c5266",
+                      "size_bytes":  6943,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_public_template.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "57e0ed15bbfd7fccf63846fbb45fd73d34fe1bf829425fcab41b7a833da371b9",
+                      "size_bytes":  5944,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parameter_cards/test_translation_evidence.py",
+                      "source_module":  "D3",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "327b56decaeed47f16dd6329e2848b499f4a6dc11afffa614ed45e394baa7c96",
+                      "size_bytes":  22174,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "D3 stage-six machine manifest expanded against HEAD"
+                  },
+                  {
+                      "public_path":  "tests/parsing/test_document_parser.py",
+                      "source_module":  "C",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "a681233fc81e7179f8dbeaed0223c15878f05c4df9cde1c07e385b465399749f",
+                      "size_bytes":  7862,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact file whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b10_public_release.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "6b01b9d51097e240f4e416145d825e73cbaff981c0a589a71376675d5b94b1da",
+                      "size_bytes":  14070,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b11_public_contract.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "e374299ae67af208942a6e34754cb9b66a72fc0145a0d958070674b223da2131",
+                      "size_bytes":  17365,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b12_pdf_routing.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "7b8d145c947216372fd60670a5398bfc7b357365985f19ff944acd455084e021",
+                      "size_bytes":  30263,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b13_output_naming.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "59c2eba686b5a28d9c61a74482861ba585cc2b819d9833be92fdeeecd88c77e4",
+                      "size_bytes":  12252,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b13_project_output_contract.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "d83eba7086fa27d077208f067f499f3c5ac6d1114731a62ead69a8c3f3600ae9",
+                      "size_bytes":  13935,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b8_runtime_security.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "7bc51e0c9e044880415a0cd36ef7f4e2016dd072ffe1f86eb1dfe7d5e80dc604",
+                      "size_bytes":  15462,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "tests/translation/test_b9_scanned_pdf_ocr.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "2c6c5ba382bf2a69e9efadff79be0f8e97b51da92e540e1f03c0547bf8e28b93",
+                      "size_bytes":  13916,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/README.md",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "60591b2e8a6ee2b1f754b7a2cdb2a344baee81a7ff221da9a936863f469c11e6",
+                      "size_bytes":  8258,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/THIRD_PARTY_NOTICES.txt",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "4b82f9af86180b8d3adcd0f481dc89e18266a4690f790c0cf008faf91e12715a",
+                      "size_bytes":  1083,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/environment.example",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "943ca27b4e7029aab00dc958ab1c92cc5dcce9586748f9dbe8f565b6f42f0ccf",
+                      "size_bytes":  2805,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/install_windows.ps1",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "c5a2078cd3632e3f02097db87a135d309ab7f2663dd4b1ee5522ac5a47bbaada",
+                      "size_bytes":  7331,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/requirements-windows.lock.txt",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "a3ef7374b2328b73ddab3ea02f0fcf283a9ae6a0a68663beaa28c25ae1396beb",
+                      "size_bytes":  2947,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/runtime_self_check.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "e0a37e7d0564f4ae9c22d83355f4117e4cba50cd54abe2119b5fd43464130184",
+                      "size_bytes":  11253,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/deploy/upstream.lock.json",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "5859fb98151cdc54e1fa41395357a2d2e08ede9d5223bed4442f8832f8e6c786",
+                      "size_bytes":  368,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/PUBLIC_GLOSSARY_PROVENANCE.md",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "eaf6ea81a5ab1673ad11d3b8670740926c370aeda10e9ba053612f4a4ebad06c",
+                      "size_bytes":  2001,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/__init__.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "d2de4cd18490b8e76451a31215894753fe20678e8895c5c5faa7c0bbf6cea09d",
+                      "size_bytes":  111,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/bootstrap.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "2a182062c2c9a43eaff2b0d05f22bef53e16d01f97da097e2e365922568e0168",
+                      "size_bytes":  6854,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/config.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "bd619cf8144851a9c92fef2ef5dbbcf00748012dec1c2582b0290ee3829325a6",
+                      "size_bytes":  1336,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/ocr.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "a85d5c2bd655de10dd4f5778a91a12ea69a00f8eba7c66e40cb6d31a9c6e30ed",
+                      "size_bytes":  21261,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/openai_batch_adapter.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "028c799fcfcbbcc208107d67dd9c11070eb8fadb523e1108919dbef0a1dfcc92",
+                      "size_bytes":  18689,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/output_naming.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "6cb94666ba13467e42123ab70f9cf9181dc4820ab7aa55fa52a97495319a4ee9",
+                      "size_bytes":  15761,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/preflight.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "382dbbbce15af52ff8cf682582946e8d8c6dd7ce2672fd7ad3a754b474fd1318",
+                      "size_bytes":  20239,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/rfq_default_glossary.json",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "751c3a858273b31e463a4d0835e1d50a0de145e10a31830847232ebedfe26891",
+                      "size_bytes":  6087,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/pdf_runtime/wrapper.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "9dd79e620e48006d925bcb5e29a3ad551ea163b671b32acdd2260c4631edb596",
+                      "size_bytes":  63208,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  },
+                  {
+                      "public_path":  "translation/rfq_pdf_translation.py",
+                      "source_module":  "B",
+                      "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
+                      "sha256":  "b295c4db110f8ff96feb1426138fa3988e655234a9e267764ab5d46105098eed",
+                      "size_bytes":  234010,
+                      "license_status":  "AGPL-3.0-only",
+                      "selection_basis":  "K6 exact static whitelist"
+                  }
+              ]
+}

@@ -1,0 +1,86 @@
+{
+  "parser_version": "synthetic-public-1.0",
+  "documents": [
+    {
+      "document_id": "fictional-process-a",
+      "file_name": "fictional_process_sheet_alpha.pdf",
+      "file_type": "pdf",
+      "parse_status": "success",
+      "page_count": 1,
+      "extracted_blocks": [
+        {
+          "block_id": "fictional-process-a-b00001",
+          "block_type": "page_text",
+          "source_location": {"type": "pdf", "page": 1, "block_index": 1, "method": "synthetic_fixture"},
+          "original_text": "HYDRAULIC DIAPHRAGM METERING PUMP TAG NO: FX-P-410A/B FLUID NAME: Synthetic Solvent Blend DENSITY: 845 kg/m3 VISCOSITY: 2.4 cP FLUID TEMPERATURE: 15-45 C PROCESS CAPACITY: 1.2-1.8 m3/h SUCTION PRESSURE: 1.4 bar.g DISCHARGE PRESSURE: 0.8 MPa WETTED PARTS MATERIAL: Synthetic Alloy QX-7 QUANTITY: 2 API 675",
+          "text_order": 1,
+          "confidence": 0.99
+        }
+      ],
+      "tables": [],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "document_id": "fictional-rated-b",
+      "file_name": "fictional_performance_note_beta.pdf",
+      "file_type": "pdf",
+      "parse_status": "success",
+      "page_count": 3,
+      "extracted_blocks": [
+        {
+          "block_id": "fictional-rated-b-b00001",
+          "block_type": "page_text",
+          "source_location": {"type": "pdf", "page": 3, "block_index": 1, "method": "synthetic_fixture"},
+          "original_text": "METERING PUMP TAG NO: FX-P-410A/B RATED CAPACITY: 2.0 m3/h",
+          "text_order": 1,
+          "confidence": 0.97
+        }
+      ],
+      "tables": [],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "document_id": "fictional-rated-c",
+      "file_name": "fictional_review_note_gamma.pdf",
+      "file_type": "pdf",
+      "parse_status": "success",
+      "page_count": 2,
+      "extracted_blocks": [
+        {
+          "block_id": "fictional-rated-c-b00001",
+          "block_type": "page_text",
+          "source_location": {"type": "pdf", "page": 2, "block_index": 1, "method": "synthetic_fixture"},
+          "original_text": "METERING PUMP TAG NO: FX-P-410A/B RATED CAPACITY: 2.2 m3/h",
+          "text_order": 1,
+          "confidence": 0.96
+        }
+      ],
+      "tables": [],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "document_id": "fictional-process-d",
+      "file_name": "fictional_process_sheet_delta.pdf",
+      "file_type": "pdf",
+      "parse_status": "success",
+      "page_count": 4,
+      "extracted_blocks": [
+        {
+          "block_id": "fictional-process-d-b00001",
+          "block_type": "page_text",
+          "source_location": {"type": "pdf", "page": 4, "block_index": 1, "method": "synthetic_fixture"},
+          "original_text": "PLUNGER METERING PUMP TAG NO: FX-P-520 FLUID NAME: Demonstration Cooling Water DENSITY: 997 kg/m3 PROCESS CAPACITY: 480 L/h SUCTION PRESSURE: 0.25 MPa DISCHARGE PRESSURE: 12 bar.g",
+          "text_order": 1,
+          "confidence": 0.98
+        }
+      ],
+      "tables": [],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "summary": {"file_count": 4, "synthetic": true}
+}
