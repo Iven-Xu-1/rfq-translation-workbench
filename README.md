@@ -42,4 +42,4 @@ Third-party components keep their own licenses. The online bootstrap downloads t
 
 ## Source version
 
-This alpha candidate is built from internal fixed source commit `2fd513ede64445145e7177ff24a5531606b807c0` through a reviewed public-path whitelist. The public repository starts with a new clean history and does not contain the internal repository history.
+This alpha candidate is built from internal fixed source commit `544c333facdfef94e99583093be7410142d446ac` through a reviewed public-path whitelist. The public repository starts with a new clean history and does not contain the internal repository history.

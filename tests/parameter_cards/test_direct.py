@@ -386,7 +386,7 @@ class TestD3DirectPipeline(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             template = Path(tmp) / "public_template.docx"
             create_public_pump_card_template(template)
-            package = Path(tmp) / "项目_直接模式"
+            package = Path(tmp) / "合成项目_直接模式"
             original_dir = package / "01_原始询价文件"
             parsed_dir = package / "系统数据" / "文本解析结果"
             original_dir.mkdir(parents=True)
@@ -419,7 +419,7 @@ class TestD3DirectPipeline(unittest.TestCase):
                 template_path=template,
                 system_output_dir=system_output,
                 word_output_path=word_output,
-                project_title="直接模式泵参数卡片",
+                project_title="合成直接模式泵参数卡片",
                 input_mode="direct",
             )
 
@@ -438,7 +438,7 @@ class TestD3DirectPipeline(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             template = Path(tmp) / "public_template.docx"
             create_public_pump_card_template(template)
-            package = Path(tmp) / "项目_扫描件"
+            package = Path(tmp) / "合成项目_扫描件"
             original_dir = package / "01_原始询价文件"
             parsed_dir = package / "系统数据" / "文本解析结果"
             original_dir.mkdir(parents=True)
@@ -462,7 +462,7 @@ class TestD3DirectPipeline(unittest.TestCase):
                 template_path=template,
                 system_output_dir=system_output,
                 word_output_path=word_output,
-                project_title="扫描件",
+                project_title="合成扫描件",
                 input_mode="direct",
             )
 

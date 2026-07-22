@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Confirmed version, for example v0.1.0-alpha.1
+        description: Confirmed version, for example v0.1.0-alpha.2
         required: true
       confirmation:
         description: Type CREATE_PRERELEASE
@@ -25,9 +25,9 @@ jobs:
           if (-not (Test-Path -LiteralPath LICENSE -PathType Leaf)) { throw 'LICENSE is missing.' }
           if (Select-String -LiteralPath LICENSE_STATUS.md -SimpleMatch 'license_pending_user_confirmation' -Quiet) { throw 'License is still pending.' }
           if (-not (Test-Path -LiteralPath SHA256SUMS.txt -PathType Leaf)) { throw 'Checksums are missing.' }
-          if ("${{ inputs.version }}" -ne 'v0.1.0-alpha.1') { throw 'This workflow is pinned to v0.1.0-alpha.1.' }
+          if ("${{ inputs.version }}" -ne 'v0.1.0-alpha.2') { throw 'This workflow is pinned to v0.1.0-alpha.2.' }
       - name: Create pre-release
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${{ inputs.version }}" --prerelease --title "${{ inputs.version }}" --notes-file docs/RELEASE_NOTES_v0.1.0-alpha.1.md
+        run: gh release create "${{ inputs.version }}" --prerelease --title "${{ inputs.version }}" --notes-file docs/RELEASE_NOTES_v0.1.0-alpha.2.md

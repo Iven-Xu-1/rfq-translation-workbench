@@ -10,14 +10,38 @@ import unittest
 from pathlib import Path
 
 
-THREAD_ROOT = Path(__file__).resolve().parents[1]
-PROJECT_ROOT = THREAD_ROOT.parent
-PROCESS_DIR = THREAD_ROOT / "02_过程文件"
-RUNNER = PROCESS_DIR / "run_d3_generation.py"
-RUNTIME_PACKAGE = PROCESS_DIR / "d3_pump_cards"
-FIXTURE_ROOT = THREAD_ROOT / "03_测试验证" / "公开合成回归样例"
-PUBLIC_TEMPLATE = THREAD_ROOT / "04_输出交付" / "公开版模板" / "通用泵参数卡片模板.docx"
-CANDIDATE_MANIFEST = THREAD_ROOT / "04_输出交付" / "D3阶段六_公开候选清单.json"
+TEST_DIR = Path(__file__).resolve().parent
+
+
+def _public_root() -> Path | None:
+    for candidate in (TEST_DIR, *TEST_DIR.parents):
+        runtime = candidate / "parameter_cards"
+        if (runtime / "run_d3_generation.py").is_file() and (
+            runtime / "d3_pump_cards" / "__init__.py"
+        ).is_file():
+            return candidate
+    return None
+
+
+def _runtime_dir() -> Path:
+    public_root = _public_root()
+    if public_root is not None:
+        return public_root / "parameter_cards"
+    module_root = TEST_DIR.parent
+    candidates = [
+        path.parent
+        for path in module_root.rglob("run_d3_generation.py")
+        if (path.parent / "d3_pump_cards" / "__init__.py").is_file()
+    ]
+    if not candidates:
+        raise FileNotFoundError("portable D3 runtime was not found beside the public tests")
+    return min(candidates, key=lambda path: (len(path.relative_to(module_root).parts), path.as_posix()))
+
+
+PUBLIC_ROOT = _public_root()
+RUNTIME_DIR = _runtime_dir()
+RUNNER = RUNTIME_DIR / "run_d3_generation.py"
+RUNTIME_PACKAGE = RUNTIME_DIR / "d3_pump_cards"
 
 
 def _isolated_environment() -> dict[str, str]:
@@ -42,32 +66,106 @@ def _run(command: list[str], *, cwd: Path) -> subprocess.CompletedProcess[str]:
     )
 
 
+def _write_synthetic_project(package: Path) -> None:
+    parsed_dir = package / "系统数据" / "文本解析结果"
+    parsed_dir.mkdir(parents=True)
+    parsed_payload = {
+        "parser_version": "portable-public-test",
+        "documents": [
+            {
+                "document_id": "synthetic-doc-001",
+                "file_name": "Synthetic Pump Datasheet.pdf",
+                "file_type": "pdf",
+                "parse_status": "success",
+                "page_count": 1,
+                "extracted_blocks": [
+                    {
+                        "block_id": "synthetic-block-001",
+                        "block_type": "page_text",
+                        "source_location": {
+                            "type": "pdf",
+                            "page": 1,
+                            "block_index": 1,
+                            "method": "synthetic",
+                        },
+                        "original_text": (
+                            "METERING PUMP TAG NO: SYN-P-001 FLUID NAME: Water "
+                            "PROCESS CAPACITY: 10 L/h DISCHARGE PRESSURE: 2 bar.g"
+                        ),
+                        "confidence": 0.96,
+                    },
+                    {
+                        "block_id": "synthetic-block-002",
+                        "block_type": "page_text",
+                        "source_location": {
+                            "type": "pdf",
+                            "page": 1,
+                            "block_index": 2,
+                            "method": "synthetic",
+                        },
+                        "original_text": (
+                            "METERING PUMP TAG NO: SYN-P-002 FLUID NAME: Methanol "
+                            "PROCESS CAPACITY: 20 L/h DISCHARGE PRESSURE: 3 bar.g"
+                        ),
+                        "confidence": 0.96,
+                    },
+                ],
+                "tables": [],
+                "warnings": [],
+                "errors": [],
+            }
+        ],
+        "summary": {"file_count": 1},
+    }
+    (parsed_dir / "parsed_documents.json").write_text(
+        json.dumps(parsed_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (package / "系统数据" / "translation_segments.json").write_text(
+        "[]\n",
+        encoding="utf-8",
+    )
+    (package / "01_原始询价文件").mkdir(parents=True)
+
+
+def _create_template(path: Path) -> None:
+    if PUBLIC_ROOT is not None:
+        source = PUBLIC_ROOT / "templates" / "pump_parameter_card.docx"
+        if not source.is_file():
+            raise FileNotFoundError(f"public template missing: {source}")
+        shutil.copy2(source, path)
+        return
+    sys.path.insert(0, str(RUNTIME_DIR))
+    from d3_pump_cards.public_template import create_public_pump_card_template
+
+    create_public_pump_card_template(path)
+
+
 class TestPublicInstalledRunner(unittest.TestCase):
     def test_candidate_manifest_declares_runner_with_complete_sibling_package(self) -> None:
-        payload = json.loads(CANDIDATE_MANIFEST.read_text(encoding="utf-8"))
-        layouts = payload.get("runtime_copy_layouts")
-        self.assertIsInstance(layouts, list)
-        self.assertEqual(len(layouts), 1)
-        layout = layouts[0]
-        self.assertEqual(layout["entrypoint"], RUNNER.name)
-        self.assertEqual(layout["sibling_packages"], [RUNTIME_PACKAGE.name])
+        self.assertTrue(RUNNER.is_file())
+        self.assertTrue((RUNTIME_PACKAGE / "__init__.py").is_file())
+        runtime_files = {path.name for path in RUNTIME_PACKAGE.glob("*.py") if path.is_file()}
+        self.assertGreaterEqual(len(runtime_files), 8)
+        if PUBLIC_ROOT is None:
+            return
 
-        source_root = PROJECT_ROOT / layout["source_root"]
-        self.assertEqual((source_root / layout["entrypoint"]).resolve(), RUNNER.resolve())
-        package = source_root / layout["sibling_packages"][0]
-        self.assertEqual(package.resolve(), RUNTIME_PACKAGE.resolve())
-        self.assertTrue((package / "__init__.py").is_file())
-
-        include_paths = set(payload["include_paths"])
-        runner_relative = RUNNER.relative_to(PROJECT_ROOT).as_posix()
-        self.assertIn(runner_relative, include_paths)
-        tracked_package_files = {
-            path.relative_to(PROJECT_ROOT).as_posix()
+        manifest_path = PUBLIC_ROOT / "PUBLIC_SOURCE_MANIFEST.json"
+        payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+        declared_paths = {
+            str(item.get("public_path") or "")
+            for item in payload.get("files", [])
+            if item.get("source_module") == "D3"
+        }
+        runner_relative = RUNNER.relative_to(PUBLIC_ROOT).as_posix()
+        package_relatives = {
+            path.relative_to(PUBLIC_ROOT).as_posix()
             for path in RUNTIME_PACKAGE.glob("*.py")
             if path.is_file()
         }
-        self.assertTrue(tracked_package_files)
-        self.assertTrue(tracked_package_files.issubset(include_paths))
+        self.assertIn(runner_relative, declared_paths)
+        self.assertTrue(package_relatives.issubset(declared_paths))
+        self.assertIn("templates/pump_parameter_card.docx", declared_paths)
 
     def test_copied_public_layout_runs_help_and_complete_synthetic_pipeline_from_other_cwd(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -84,8 +182,8 @@ class TestPublicInstalledRunner(unittest.TestCase):
             )
             installed_assets = root / "public-runtime" / "assets"
             installed_assets.mkdir()
-            installed_template = installed_assets / PUBLIC_TEMPLATE.name
-            shutil.copy2(PUBLIC_TEMPLATE, installed_template)
+            installed_template = installed_assets / "pump_parameter_card.docx"
+            _create_template(installed_template)
 
             installed_runner = installed / RUNNER.name
             help_result = _run([sys.executable, str(installed_runner), "--help"], cwd=unrelated_cwd)
@@ -94,8 +192,7 @@ class TestPublicInstalledRunner(unittest.TestCase):
             self.assertNotIn("Traceback", help_result.stderr)
 
             package = root / "synthetic-project"
-            shutil.copytree(FIXTURE_ROOT / "系统数据", package / "系统数据")
-            (package / "01_原始询价文件").mkdir(parents=True)
+            _write_synthetic_project(package)
             system_output = package / "系统数据" / "参数卡片结果_D3"
             word_output = package / "03_参数汇总表" / "泵参数卡片_公开安装回归.docx"
             result = _run(

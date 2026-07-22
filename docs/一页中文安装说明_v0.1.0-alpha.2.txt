@@ -1,0 +1,29 @@
+RFQ Translation Workbench v0.1.0-alpha.2
+Windows 普通用户一页安装说明
+
+适用系统
+Windows 10/11 64 位；首次安装需要互联网和约 20-40 分钟。请使用普通用户权限，不需要管理员权限。
+
+安装
+1. 在 GitHub v0.1.0-alpha.2 Pre-release 下载：
+   rfq-translation-workbench-v0.1.0-alpha.2-windows-online-bootstrap.zip
+   SHA256SUMS.txt
+2. 在 PowerShell 中执行：
+   Get-FileHash .\rfq-translation-workbench-v0.1.0-alpha.2-windows-online-bootstrap.zip -Algorithm SHA256
+3. 将结果与 SHA256SUMS.txt 中同名文件的值逐字比较；不一致就不要运行。
+4. 把 ZIP 完整解压到本机普通文件夹，不要从压缩包内直接运行，也不要放在网络盘。
+5. 双击 Install.cmd。安装器会从 python.org、PyPI 和固定 GitHub 提交下载依赖。
+
+配置与使用
+1. 按 docs\INSTALL_WINDOWS.md 配置自己的 OpenAI-compatible API 地址、模型名和 API Key。
+2. Key 使用 Windows DPAPI 绑定当前用户保存，不会写入仓库或发行包。
+3. 启动后仅访问 http://127.0.0.1:8008；本工具不会自动开放局域网、防火墙或路由器端口。
+4. 选择文件后可使用“仅翻译”或“翻译并生成泵参数卡片”。
+
+重要提醒
+- 被选择文件中需要翻译的文本会发送到你配置的外部模型服务；没有外发许可的保密资料不要使用本工具处理。
+- DOC/XLS 需要另装 LibreOffice；复杂 PDF、扫描件、Office 对象和参数提取结果必须人工复核。
+- 这是 Alpha 版本，建议先用脱敏小样测试。
+
+卸载
+运行安装目录中的 scripts\Uninstall-RFQWorkbench.ps1。默认保留项目数据和配置；删除数据需要额外明确确认。

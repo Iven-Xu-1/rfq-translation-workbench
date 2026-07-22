@@ -1,14 +1,42 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
 
 
-THREAD_ROOT = Path(__file__).resolve().parents[1]
-PROCESS_DIR = THREAD_ROOT / "02_过程文件"
-sys.path.insert(0, str(PROCESS_DIR))
+TEST_DIR = Path(__file__).resolve().parent
+
+
+def _public_root() -> Path | None:
+    for candidate in (TEST_DIR, *TEST_DIR.parents):
+        runtime = candidate / "parameter_cards"
+        if (runtime / "run_d3_generation.py").is_file() and (
+            runtime / "d3_pump_cards" / "__init__.py"
+        ).is_file():
+            return candidate
+    return None
+
+
+def _runtime_dir() -> Path:
+    public_root = _public_root()
+    if public_root is not None:
+        return public_root / "parameter_cards"
+    module_root = TEST_DIR.parent
+    candidates = [
+        path.parent
+        for path in module_root.rglob("run_d3_generation.py")
+        if (path.parent / "d3_pump_cards" / "__init__.py").is_file()
+    ]
+    if not candidates:
+        raise FileNotFoundError("portable D3 runtime was not found beside the public tests")
+    return min(candidates, key=lambda path: (len(path.relative_to(module_root).parts), path.as_posix()))
+
+
+RUNTIME_DIR = _runtime_dir()
+sys.path.insert(0, str(RUNTIME_DIR))
 
 from d3_pump_cards.api675_extractor import (  # noqa: E402
     normalize_api675_tag_group,
@@ -20,19 +48,26 @@ from d3_pump_cards.centrifugal_datasheet_extractor import (  # noqa: E402
 )
 
 
-FORBIDDEN_PUBLIC_MARKERS = tuple(
-    "".join(parts)
-    for parts in (
-        ("g", "p", "s"),
-        ("l", "u", "m", "m", "u", "s"),
-        ("k", "m", "c"),
-        ("p", "e", "t", "r", "o"),
-        ("p", "k", "s", "m"),
-    )
+FORBIDDEN_PUBLIC_PATTERNS = (
+    re.compile(r"[A-Z]:[\\/](?:Users|Documents|Desktop)[\\/]", re.IGNORECASE),
 )
 
 
-def _parsed_document(text: str, file_name: str = "7-P-410ABC Process Datasheet.pdf") -> dict:
+def _public_test_files() -> list[Path]:
+    logical_names = {"direct", "docx_renderer", "engine", "public_generic_extractors"}
+    return sorted(
+        path
+        for path in TEST_DIR.glob("test*.py")
+        if path.stem.removeprefix("test_d3_").removeprefix("test_") in logical_names
+    )
+
+
+def _assert_portable_content(test_case: unittest.TestCase, content: str, source: object) -> None:
+    for pattern in FORBIDDEN_PUBLIC_PATTERNS:
+        test_case.assertIsNone(pattern.search(content), str(source))
+
+
+def _parsed_document(text: str, file_name: str = "Synthetic Centrifugal Datasheet.pdf") -> dict:
     return {
         "parser_version": "public-test",
         "documents": [
@@ -63,25 +98,20 @@ def _parsed_document(text: str, file_name: str = "7-P-410ABC Process Datasheet.p
 
 class TestPublicGenericExtractors(unittest.TestCase):
     def test_public_source_and_tests_have_no_sample_specific_markers(self) -> None:
-        source_files = sorted((PROCESS_DIR / "d3_pump_cards").glob("*.py"))
-        public_test_files = [
-            THREAD_ROOT / "03_测试验证" / "test_d3_direct.py",
-            THREAD_ROOT / "03_测试验证" / "test_d3_docx_renderer.py",
-            THREAD_ROOT / "03_测试验证" / "test_d3_engine.py",
-            Path(__file__),
-        ]
+        source_files = sorted((RUNTIME_DIR / "d3_pump_cards").glob("*.py"))
+        public_test_files = _public_test_files()
+        self.assertTrue(source_files)
+        self.assertEqual(len(public_test_files), 4)
         for path in [*source_files, *public_test_files]:
-            content = path.read_text(encoding="utf-8").casefold()
-            for marker in FORBIDDEN_PUBLIC_MARKERS:
-                self.assertNotIn(marker, content, str(path))
+            _assert_portable_content(self, path.read_text(encoding="utf-8"), path)
 
     def test_centrifugal_group_normalization_is_generic(self) -> None:
-        self.assertEqual(normalize_centrifugal_tag_group("7-P-410ABC"), "7-P-410A/B/C")
+        self.assertEqual(normalize_centrifugal_tag_group("0-P-000ABC"), "0-P-000A/B/C")
 
     def test_centrifugal_datasheet_branch_emits_only_technical_identifiers(self) -> None:
         text = (
             "DATA SHEET Centrifugal Pump "
-            "ITEM NUMBER 7-P-410ABC SERVICE Cooling Water Pumps CASE 1 "
+            "SYNTHETIC FIXTURE ITEM NUMBER 0-P-000ABC SERVICE Cooling Water Pumps CASE 1 "
             "FLUID TYPE Treated Water MODEL CP-100 "
             "SPECIFIC GRAVITY @ P&T 1.02 COOLING WATER "
             "VISCOSITY @ P&T cP 1.5 SEAL FLUSH "
@@ -94,15 +124,13 @@ class TestPublicGenericExtractors(unittest.TestCase):
         )
         result = extract_centrifugal_datasheet_cards(_parsed_document(text))
 
-        self.assertEqual([card["tag_no"] for card in result["cards"]], ["7-P-410A/B/C"])
+        self.assertEqual([card["tag_no"] for card in result["cards"]], ["0-P-000A/B/C"])
         self.assertEqual(result["metadata"]["branch"], "centrifugal_process_datasheet_parser")
         self.assertIn("centrifugal_field_debug", result)
-        serialized = json.dumps(result, ensure_ascii=False).casefold()
-        for marker in FORBIDDEN_PUBLIC_MARKERS:
-            self.assertNotIn(marker, serialized)
+        _assert_portable_content(self, json.dumps(result, ensure_ascii=False), "centrifugal result")
 
     def test_multisource_tag_fallback_keeps_grouping_and_debug_contract(self) -> None:
-        tag = "Z99-QX-4321-P7 A/B"
+        tag = "Z00-SYN-0000-P0 A/B"
         text = (
             "Process Datasheet for Chemical Injection Pump (Unit) "
             "GENERAL DATA "
@@ -134,14 +162,12 @@ class TestPublicGenericExtractors(unittest.TestCase):
         self.assertEqual(result["metadata"]["branch"], "multisource_tag_fallback")
         self.assertIn("multisource_tag_candidate_debug", result)
         self.assertIn("multisource_merge_debug", result)
-        serialized = json.dumps(result, ensure_ascii=False).casefold()
-        for marker in FORBIDDEN_PUBLIC_MARKERS:
-            self.assertNotIn(marker, serialized)
+        _assert_portable_content(self, json.dumps(result, ensure_ascii=False), "multisource result")
 
     def test_api675_operating_and_material_pages_merge_by_item_number(self) -> None:
         operating_text = (
             "CONTROLLED VOLUME PUMP DATA SHEET API 675 "
-            "ITEM NO. PK90001 PUMP ITEM NO'S P90001A/B "
+            "SYNTHETIC FIXTURE ITEM NO. PK00000 PUMP ITEM NO'S P00000A/B "
             "NO. OF PUMPS REQUIRED TWO (2) SERVICE Chemical Injection MODEL MX-1 "
             "SIZE AND TYPE Hydraulic Diaphragm MANUFACTURER Example "
             "CAPACITY @ PT (l/hr): MAXIMUM 100 MINIMUM 10 NORMAL 80 "
@@ -154,7 +180,7 @@ class TestPublicGenericExtractors(unittest.TestCase):
             "OPERATING CONDITIONS"
         )
         material_text = (
-            "CONTROLLED VOLUME PUMP DATA SHEET API 675 ITEM NO. PK90001 MATERIALS "
+            "CONTROLLED VOLUME PUMP DATA SHEET API 675 ITEM NO. PK00000 MATERIALS "
             "LIQUID END SS316L PROCESS DIAPHRAGM PTFE "
             "VALVE BODY SS316L FRAME Carbon Steel"
         )
@@ -177,7 +203,7 @@ class TestPublicGenericExtractors(unittest.TestCase):
 
         result = parse_api675_structured_pages(pages)
 
-        self.assertEqual([card["tag_no"] for card in result["cards"]], ["P90001A/B"])
+        self.assertEqual([card["tag_no"] for card in result["cards"]], ["P00000A/B"])
         card = result["cards"][0]
         self.assertEqual(card["direct_extraction_branch"], "api675_table_parser")
         self.assertEqual(card["fields"]["process_capacity"]["values"][0]["normalized_value"], "80")

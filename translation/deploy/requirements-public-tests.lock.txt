@@ -1,0 +1,12 @@
+# Minimal exact dependencies for B public contract tests on CPython 3.12 / Windows x64.
+# Tests use only local fakes and synthetic files; no API key or model download is required.
+
+numpy==2.5.1
+openpyxl==3.1.5
+pdfplumber==0.11.9
+pillow==11.3.0
+PyMuPDF==1.25.2
+pypdf==6.10.0
+pypdfium2==5.11.0
+python-docx==1.2.0
+reportlab==4.4.9

@@ -1,620 +1,635 @@
 {
-    "schema_version":  "1.0",
-    "product":  "RFQ Translation Workbench",
-    "version":  "0.1.0-alpha.1",
-    "candidate_state":  "public_prerelease_ready",
-    "publication_allowed":  true,
-    "license":  "AGPL-3.0-only",
-    "source_commit":  "2fd513ede64445145e7177ff24a5531606b807c0",
-    "source_history_included":  false,
-    "embedded_runtime_included":  false,
-    "distribution":  "source_and_windows_online_bootstrap",
-    "generated_at_utc":  "2026-07-20T11:46:02.7999198Z",
-    "files":  [
-                  {
-                      "path":  ".env.example",
-                      "size":  271,
-                      "sha256":  "0a3c501ad3fa82f7b07aa81d26a5ebf477d6507a9c9fa6748811a5c24f0dd933"
-                  },
-                  {
-                      "path":  ".gitattributes",
-                      "size":  211,
-                      "sha256":  "76c67d14bcbcc02c777143a22f3bb9f2ee91931adf31ecc253500803d4dca9b7"
-                  },
-                  {
-                      "path":  ".github/workflows/ci.yml",
-                      "size":  1097,
-                      "sha256":  "4724681c5a3b183017785b75415922b7b1e7283c39f8d5426d7da1e38ea8ca26"
-                  },
-                  {
-                      "path":  ".github/workflows/prepare-draft-release.yml",
-                      "size":  1286,
-                      "sha256":  "907b748f5fb1098d74d3722c12a6828e1c0ca4ca4dd18fea3286b6573cc3f2a5"
-                  },
-                  {
-                      "path":  ".gitignore",
-                      "size":  342,
-                      "sha256":  "7f1a4811d526d459107a0df6f02ce13c4e6157b786a270a41ee477bcf0b2fd47"
-                  },
-                  {
-                      "path":  "app/deployment.env.example",
-                      "size":  1130,
-                      "sha256":  "cd97027167864ec178bb1c9ba1b67ffab2aee48bf5239b6bbae0cc837dfed47d"
-                  },
-                  {
-                      "path":  "app/requirements.txt",
-                      "size":  105,
-                      "sha256":  "320ca9b07787dea28d9207c0fc9951a9d0ae7c4a98f935504c62204cfef20b90"
-                  },
-                  {
-                      "path":  "app/rfq_app/__init__.py",
-                      "size":  58,
-                      "sha256":  "7c95616c05cec8a6bd4ab5a602c4942a473895b049d9d67ad94efd3ebe87db66"
-                  },
-                  {
-                      "path":  "app/rfq_app/app_logging.py",
-                      "size":  1056,
-                      "sha256":  "d722f88b3f50691d6a2dbe283f99b7d1075019d3f5aef5a637683124d71ae311"
-                  },
-                  {
-                      "path":  "app/rfq_app/archive_service.py",
-                      "size":  2178,
-                      "sha256":  "4a9e9ea584a7bd81dbd459369b9a510f6735c383d1bd87b694f455985abd2a91"
-                  },
-                  {
-                      "path":  "app/rfq_app/main.py",
-                      "size":  27981,
-                      "sha256":  "a033026920c787f2709d0db686c2d78251ca25e16bf6de6696ed1b6605f521e6"
-                  },
-                  {
-                      "path":  "app/rfq_app/models.py",
-                      "size":  7451,
-                      "sha256":  "14d54590de770932febc153042c1c113cbfe9fe3cb09118537be3b589713e654"
-                  },
-                  {
-                      "path":  "app/rfq_app/persistence.py",
-                      "size":  1503,
-                      "sha256":  "97e0b2149319300cd062ce506e450d60f510d89fed0200e58a38f253d03d37fb"
-                  },
-                  {
-                      "path":  "app/rfq_app/processing_service.py",
-                      "size":  74169,
-                      "sha256":  "bb5c27360372868b1375445fe52f275dbea9aecc35c419f5e1af74ea571faa56"
-                  },
-                  {
-                      "path":  "app/rfq_app/project_service.py",
-                      "size":  6479,
-                      "sha256":  "f702102d2cab506b56efa6ee3994a46e2b79e603fee3459ef9a72a5069f63f69"
-                  },
-                  {
-                      "path":  "app/rfq_app/result_service.py",
-                      "size":  52483,
-                      "sha256":  "13dbb5d8d640c437fa1939c3f147f612d38faf2e27b8836cdd9dc631015f481d"
-                  },
-                  {
-                      "path":  "app/rfq_app/runtime_config.py",
-                      "size":  7676,
-                      "sha256":  "d5ca436492e4e2a566f3eb1ee376e922aadaf0cd1d8295fabf8c51f7d914dbb8"
-                  },
-                  {
-                      "path":  "app/rfq_app/upload_service.py",
-                      "size":  5137,
-                      "sha256":  "dfd48d8bac66a0a979ef26b9aba2dc8075012c02907d2c0c02ec5163e29e12f4"
-                  },
-                  {
-                      "path":  "app/static/app.js",
-                      "size":  87122,
-                      "sha256":  "33fc65dc98c9968cf56a811f68ff64e8efddbbf64fca653054286a19138b6e2c"
-                  },
-                  {
-                      "path":  "app/static/index.html",
-                      "size":  12410,
-                      "sha256":  "a4dc3557fc58fe9cbb1c3a26f59a9e3b9e1c039a6aafe4a183d5364971560020"
-                  },
-                  {
-                      "path":  "app/static/styles.css",
-                      "size":  38849,
-                      "sha256":  "484e8fc7617f7773d58b2e7ceb4e31a44b7333c8785320674077f413da947f10"
-                  },
-                  {
-                      "path":  "bootstrap/Install-RFQTranslationWorkbench.ps1",
-                      "size":  8528,
-                      "sha256":  "acf469101cec427176c6f39b0b0bfe3489984e11fb8f99f4f69af590285bd500"
-                  },
-                  {
-                      "path":  "bootstrap/README_FIRST.txt",
-                      "size":  530,
-                      "sha256":  "fa47bd7448f30ce4996dfefd07046cf986d5210696f4e770755df4bfe3d71af8"
-                  },
-                  {
-                      "path":  "CHANGELOG.md",
-                      "size":  837,
-                      "sha256":  "8d714196bb1e8a0dba8a243bfcafe6a8c8c679e51868778e58d5905d8695a304"
-                  },
-                  {
-                      "path":  "CONTRIBUTING.md",
-                      "size":  681,
-                      "sha256":  "cb3aeaf8ece9459ad381d8f4ce0b93adbfd60fa8ef239bcf8251648ab1b48fea"
-                  },
-                  {
-                      "path":  "DATA_HANDLING.md",
-                      "size":  1529,
-                      "sha256":  "fffbdde918f5d00202ad5f576d9e2a234a09d29454719ae015e6ba4426b98897"
-                  },
-                  {
-                      "path":  "docs/DATA_AND_EXTERNAL_API.md",
-                      "size":  909,
-                      "sha256":  "bca2653e3dab9887be82e3a6e8f5a0e5fe147decee20e5d4cc63a749f37f834d"
-                  },
-                  {
-                      "path":  "docs/INSTALL_WINDOWS.md",
-                      "size":  2719,
-                      "sha256":  "ebce60ce3176b42b8d3bc5b17dd9c80232ac502221c8606efb4888fb3c4a0edc"
-                  },
-                  {
-                      "path":  "docs/parameter_cards/public_install_layout.txt",
-                      "size":  1665,
-                      "sha256":  "ae393441790aa301229a86709c1b4a0a2a78545fb8e3d0ae0f88d8717ea80ee3"
-                  },
-                  {
-                      "path":  "docs/RELEASE_NOTES_v0.1.0-alpha.1.md",
-                      "size":  852,
-                      "sha256":  "1523c208e52621211105b112731b3988a087c7fadd01cc4236d031c0c88b71b4"
-                  },
-                  {
-                      "path":  "docs/TROUBLESHOOTING.md",
-                      "size":  1355,
-                      "sha256":  "e12d4f86c84d10641ada0afb42a806992e4f1dccb246f7c67afa3b7c2087d3cd"
-                  },
-                  {
-                      "path":  "docs/UNINSTALL_WINDOWS.md",
-                      "size":  622,
-                      "sha256":  "4a0507ac9b5b55397b81367f5b1043b9aa8e5f091542cab0a07698800b9499d3"
-                  },
-                  {
-                      "path":  "docs/VERSIONING.md",
-                      "size":  411,
-                      "sha256":  "915d17c2026724696e40155a3596575f2d82ff4ff9c288ca4827c98d78a44440"
-                  },
-                  {
-                      "path":  "Install.cmd",
-                      "size":  385,
-                      "sha256":  "70b4a763a457c174c607076c77ff37ca4b172b1de562c4ae4b2b6f7d19916eb5"
-                  },
-                  {
-                      "path":  "LICENSE",
-                      "size":  34523,
-                      "sha256":  "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
-                  },
-                  {
-                      "path":  "LICENSE_STATUS.md",
-                      "size":  371,
-                      "sha256":  "59ad75690a217c68003600d0e5337f35a1d5d38a800d87d16679b8686030fab0"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/__init__.py",
-                      "size":  207,
-                      "sha256":  "647103dc99742d88c7ecdad5a41253105bc63f87cab4c3f2c29f45d0a2a236a3"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/api675_extractor.py",
-                      "size":  52734,
-                      "sha256":  "28c8aaf691cd7daef133065f888565cb27b41a701a9deb0b1afd5c7ad8136380"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/centrifugal_datasheet_extractor.py",
-                      "size":  25773,
-                      "sha256":  "d1c9d6961161560fc586a338403dea719fa73732de764b651b51507c1052462f"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/direct_extractor.py",
-                      "size":  62556,
-                      "sha256":  "54eec9e2841ac4f19eec3e1524006c4dd367da537061ab9b768ea897b7cf722e"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/docx_renderer.py",
-                      "size":  14864,
-                      "sha256":  "e0ea3c0b28a39ee3aa66306607809b09941c166c3f3cc9f9121d1127e522fe76"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/engine.py",
-                      "size":  33167,
-                      "sha256":  "c9779c5635e82b213cf97ac035890079729cd3c0e43463f11a3c775e764a89b5"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/pipeline.py",
-                      "size":  13371,
-                      "sha256":  "5118ae3bf133c00afb75d5200fbb55ba0832dce86fb664af9d9a43cf7cf7ddea"
-                  },
-                  {
-                      "path":  "parameter_cards/d3_pump_cards/public_template.py",
-                      "size":  8069,
-                      "sha256":  "5cb75db94a8389abf42ca9132297aed6b15914626b068667f82df0517bb26c0b"
-                  },
-                  {
-                      "path":  "parameter_cards/run_d3_generation.py",
-                      "size":  2667,
-                      "sha256":  "fe62b591f24464c7d8fb6af7034fe0cc5682b63981da67d6abb7e8b9cad33ad2"
-                  },
-                  {
-                      "path":  "parsing/parser.py",
-                      "size":  534,
-                      "sha256":  "09fb90ce6dcbacd1cbb97e20c8bdcc22c9e1d6f8b9b2168e4d0838d69dca3be2"
-                  },
-                  {
-                      "path":  "parsing/rfq_text_parser/__init__.py",
-                      "size":  46,
-                      "sha256":  "8c16a6d56221c726e78a78916007cea6c52980c61c1a47105606ba65441f290c"
-                  },
-                  {
-                      "path":  "parsing/rfq_text_parser/parser.py",
-                      "size":  21047,
-                      "sha256":  "8c4b455094aa956f3f5bb8736aad0461e50279361a2830d748313025106d6bfd"
-                  },
-                  {
-                      "path":  "pipeline/j_trial_pipeline.py",
-                      "size":  129037,
-                      "sha256":  "eb3d0ae82879d10f9832d8b9d5cb57518fe9d24482003069346ed4baecb93816"
-                  },
-                  {
-                      "path":  "PRIVACY.md",
-                      "size":  1136,
-                      "sha256":  "3870328ba43752312842390821ea6300338906980bf04bc83a29b8edaed5639b"
-                  },
-                  {
-                      "path":  "PUBLIC_SOURCE_MANIFEST.json",
-                      "size":  41850,
-                      "sha256":  "eeb26c01e26354e5eda7f8382e35d1d566506a333e671cf75ccb8911ffa147cc"
-                  },
-                  {
-                      "path":  "README.md",
-                      "size":  3185,
-                      "sha256":  "e3af8a75f816c7cc58173e46b400b21e12d24220e18fec3f58a32d1df538c44c"
-                  },
-                  {
-                      "path":  "README.zh-CN.md",
-                      "size":  2749,
-                      "sha256":  "8227b2f224a87a7ca1c5eabbd5045d3f60869f8d3d37a4d35cd71099c16f9017"
-                  },
-                  {
-                      "path":  "reports/f_exporter/__init__.py",
-                      "size":  31,
-                      "sha256":  "daeba110cf16cdac1a958760df7fa62e1b8dfdcf51be4be0a3c5cad775f6bc46"
-                  },
-                  {
-                      "path":  "reports/f_exporter/export_model.py",
-                      "size":  15472,
-                      "sha256":  "8c400202ab29bc77287cde1e13c0ab5fe53a924e7661988ffd89070d6c7349ca"
-                  },
-                  {
-                      "path":  "reports/f_exporter/export_model_d3.py",
-                      "size":  13984,
-                      "sha256":  "f7b5632377c2a7a33d9a84e4204f9f895b3893522dc5c79ec472aa3f6031f32a"
-                  },
-                  {
-                      "path":  "reports/f_exporter/run_export.py",
-                      "size":  489,
-                      "sha256":  "1ac17bd39b9f78a1011819479b56b15f7db790cfe3d0d93f63d08b7436347867"
-                  },
-                  {
-                      "path":  "reports/f_exporter/run_export_d3.py",
-                      "size":  14919,
-                      "sha256":  "6c97c957137af152e07cdb8e7ac1f9bf4864ab322bf730aa04b046751d8a76c0"
-                  },
-                  {
-                      "path":  "reports/f_exporter/workbook.py",
-                      "size":  5851,
-                      "sha256":  "5d14816a9f4a900e002c9c508fa2e9001949fe5ad1c3a04ef62111ee848e3680"
-                  },
-                  {
-                      "path":  "reports/run_export_d3.py",
-                      "size":  389,
-                      "sha256":  "3ad4b91d0a5d060e96ad1cfac13662056bd3c17324676b137be84e91f2ae4c3e"
-                  },
-                  {
-                      "path":  "requirements/README.md",
-                      "size":  525,
-                      "sha256":  "6d898a24cd671b6ea7827170fccd3ce584f1a71f69e2c77b2b6ec7baac60c7c9"
-                  },
-                  {
-                      "path":  "requirements-ci.txt",
-                      "size":  168,
-                      "sha256":  "d63863b830aa4f92fcee3b0b0162b934ba31c0fcd997e161fe89d576d9a47dd3"
-                  },
-                  {
-                      "path":  "sbom/rfq-translation-workbench.cdx.json",
-                      "size":  399078,
-                      "sha256":  "573d208f9deb4a78366b0804d58db4fbb021760b317c0159d556d691b5b5d530"
-                  },
-                  {
-                      "path":  "scripts/Common-RFQWorkbench.ps1",
-                      "size":  27310,
-                      "sha256":  "6ba3e6ded86d7dd90bc47da4580c92be98aaeb6c857a5074a9b961d1f72f00b4"
-                  },
-                  {
-                      "path":  "scripts/Configure-RFQWorkbench.ps1",
-                      "size":  2005,
-                      "sha256":  "3f324873fdce00cfd5ff8976e4010e0da8ce5d25d4c050de9d7576c5712baaf8"
-                  },
-                  {
-                      "path":  "scripts/Get-RFQWorkbenchStatus.ps1",
-                      "size":  1397,
-                      "sha256":  "32058089f9b2b8b202e34d8e9c680c351fb3cfc81f9243aed70f09cfd8c45105"
-                  },
-                  {
-                      "path":  "scripts/Install-RFQWorkbench.ps1",
-                      "size":  9959,
-                      "sha256":  "dafd8780e9a09ffbdc13953cb842b181ca77ec6cca825fc80bd7d4068e761c5c"
-                  },
-                  {
-                      "path":  "scripts/New-RFQPortableRuntime.ps1",
-                      "size":  10119,
-                      "sha256":  "ea51ffaa6fa9abcd0140f437384bda19272eb24e86411b1216028025c2003027"
-                  },
-                  {
-                      "path":  "scripts/public_scan.py",
-                      "size":  27250,
-                      "sha256":  "83750835dadcc29d9fcb6da23e9884bada88379f5a3607b13cafbd76dd8b76f3"
-                  },
-                  {
-                      "path":  "scripts/Rollback-RFQWorkbench.ps1",
-                      "size":  2536,
-                      "sha256":  "16f9b814629a994439afa183ce16f1f9f58869ff238efac9e48358db8433b59b"
-                  },
-                  {
-                      "path":  "scripts/Start-RFQWorkbench.ps1",
-                      "size":  2837,
-                      "sha256":  "92b516c61eb6ff6040afd85d50d35c4193c4a712c881daff96b74901ac79fb9d"
-                  },
-                  {
-                      "path":  "scripts/Stop-RFQWorkbench.ps1",
-                      "size":  1611,
-                      "sha256":  "547fb071c357a52c7e8db085c510e33dbf17c5cb6f14210cce9499504037b25f"
-                  },
-                  {
-                      "path":  "scripts/Test-RFQPortableRuntime.ps1",
-                      "size":  6747,
-                      "sha256":  "4103f7dd57f1546618f9fe4cd939dcb6a88c437558b6c97b9c6869d4c9f6e98e"
-                  },
-                  {
-                      "path":  "scripts/Uninstall-RFQWorkbench.ps1",
-                      "size":  3766,
-                      "sha256":  "988eab5e59b58b8b6d1d0cda9c3f7f17599fabeb8debed7307fb93970b3c2254"
-                  },
-                  {
-                      "path":  "scripts/Update-RFQWorkbench.ps1",
-                      "size":  3827,
-                      "sha256":  "08566aae7efde99e9d9e63670e7c3f761a41814ad0262df4801f60d927213baa"
-                  },
-                  {
-                      "path":  "scripts/Watch-RFQWorkbench.ps1",
-                      "size":  3210,
-                      "sha256":  "c118a0396ab75ba636b5b46630f6f5160f5c266666771a01ce83116d935a13c8"
-                  },
-                  {
-                      "path":  "SECURITY.md",
-                      "size":  1095,
-                      "sha256":  "a43eb2f6ec4e335c3f83a2b9d130edb0d473414b57ac9fcf2a561186a4cf1c39"
-                  },
-                  {
-                      "path":  "templates/pump_parameter_card.docx",
-                      "size":  38924,
-                      "sha256":  "0476ebe2569dfa58ee3a111c35772859d8e33885d84e3648396b7b42b3019fa6"
-                  },
-                  {
-                      "path":  "templates/来源权属声明.txt",
-                      "size":  624,
-                      "sha256":  "ef4fb1e146dfe4a87130ee1571b74b389b96d82d64145593a678f5a5fe297f10"
-                  },
-                  {
-                      "path":  "templates/模板字段说明.txt",
-                      "size":  1435,
-                      "sha256":  "20a5ecda29c1ab24bcfdd660a0c66e9bd8f922afe1bed536292731dc140ffa4f"
-                  },
-                  {
-                      "path":  "tests/app/test_a15_clean_install.py",
-                      "size":  4858,
-                      "sha256":  "24c4d89221d2e4734efb9991df4e04729714d64ef9ef5c5f5558da1979b6ef1b"
-                  },
-                  {
-                      "path":  "tests/app/test_a15_runtime_config.py",
-                      "size":  5325,
-                      "sha256":  "f6ed330415b27e2b2db759bddea9f3917d2ac14aa9e832f84e52e956d0ebd4a9"
-                  },
-                  {
-                      "path":  "tests/fixtures/parameter_cards/synthetic_regression/合成样例说明.txt",
-                      "size":  615,
-                      "sha256":  "6c647f5febe7d5df674ff06577d1bc0fd31cc780db090aebba6fd1e859f3e3c7"
-                  },
-                  {
-                      "path":  "tests/fixtures/parameter_cards/synthetic_regression/系统数据/translation_segments.json",
-                      "size":  379,
-                      "sha256":  "1240623fd8c69fb6d1f6cd38f258fe44d42ccc0f61c67fe19014e8b7f99c0db6"
-                  },
-                  {
-                      "path":  "tests/fixtures/parameter_cards/synthetic_regression/系统数据/文本解析结果/parsed_documents.json",
-                      "size":  3090,
-                      "sha256":  "8d0273d447887fdcd9ffb4a27103d3d3f5cc0e4718d366a90e0b8f8261c179e7"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/generate_pipeline_evidence.py",
-                      "size":  3172,
-                      "sha256":  "ec38b8f5ababdb7fa8366bd7c1528438c3d48526d180c496f36ed009e955caa2"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/generate_template_demo.py",
-                      "size":  2158,
-                      "sha256":  "bce96183619b3078b3d63611f8d8b265d8bf50468c90e6a94a342c409e45007e"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_direct.py",
-                      "size":  20016,
-                      "sha256":  "c87f9cb6191586d36fc0b1193eebf3a8c6ecba8653584aab536c6a19bcc52730"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_docx_renderer.py",
-                      "size":  6763,
-                      "sha256":  "5a93ef0c0db774af4bbe1c72724e923c7c2f59ed2b3037c34adb268ca96f0aab"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_engine.py",
-                      "size":  7556,
-                      "sha256":  "1095e8411032727faf6bb5247134c178b427190b5a5e8e695bd7c55d3459d231"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_public_generic_extractors.py",
-                      "size":  7769,
-                      "sha256":  "f7ccd91d38da901bea9fb80c798f2b5dbae14ba7cfac842846bf1374e4cb9c33"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_public_install_runner.py",
-                      "size":  6943,
-                      "sha256":  "fae2e127c8951c4049117b7f1e227486a8a147c8a068bedcb3ff0b8b904c5266"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_public_template.py",
-                      "size":  5944,
-                      "sha256":  "57e0ed15bbfd7fccf63846fbb45fd73d34fe1bf829425fcab41b7a833da371b9"
-                  },
-                  {
-                      "path":  "tests/parameter_cards/test_translation_evidence.py",
-                      "size":  22174,
-                      "sha256":  "327b56decaeed47f16dd6329e2848b499f4a6dc11afffa614ed45e394baa7c96"
-                  },
-                  {
-                      "path":  "tests/parsing/test_document_parser.py",
-                      "size":  7862,
-                      "sha256":  "a681233fc81e7179f8dbeaed0223c15878f05c4df9cde1c07e385b465399749f"
-                  },
-                  {
-                      "path":  "tests/translation/test_b10_public_release.py",
-                      "size":  14070,
-                      "sha256":  "6b01b9d51097e240f4e416145d825e73cbaff981c0a589a71376675d5b94b1da"
-                  },
-                  {
-                      "path":  "tests/translation/test_b11_public_contract.py",
-                      "size":  17365,
-                      "sha256":  "e374299ae67af208942a6e34754cb9b66a72fc0145a0d958070674b223da2131"
-                  },
-                  {
-                      "path":  "tests/translation/test_b12_pdf_routing.py",
-                      "size":  30263,
-                      "sha256":  "7b8d145c947216372fd60670a5398bfc7b357365985f19ff944acd455084e021"
-                  },
-                  {
-                      "path":  "tests/translation/test_b13_output_naming.py",
-                      "size":  12252,
-                      "sha256":  "59c2eba686b5a28d9c61a74482861ba585cc2b819d9833be92fdeeecd88c77e4"
-                  },
-                  {
-                      "path":  "tests/translation/test_b13_project_output_contract.py",
-                      "size":  13935,
-                      "sha256":  "d83eba7086fa27d077208f067f499f3c5ac6d1114731a62ead69a8c3f3600ae9"
-                  },
-                  {
-                      "path":  "tests/translation/test_b8_runtime_security.py",
-                      "size":  15462,
-                      "sha256":  "7bc51e0c9e044880415a0cd36ef7f4e2016dd072ffe1f86eb1dfe7d5e80dc604"
-                  },
-                  {
-                      "path":  "tests/translation/test_b9_scanned_pdf_ocr.py",
-                      "size":  13916,
-                      "sha256":  "2c6c5ba382bf2a69e9efadff79be0f8e97b51da92e540e1f03c0547bf8e28b93"
-                  },
-                  {
-                      "path":  "THIRD_PARTY_NOTICES.md",
-                      "size":  27366,
-                      "sha256":  "42b5896e326e3e309dcc8d115c94435644681e22f8a3039b2aaaba0be273b9bb"
-                  },
-                  {
-                      "path":  "translation/deploy/environment.example",
-                      "size":  2805,
-                      "sha256":  "943ca27b4e7029aab00dc958ab1c92cc5dcce9586748f9dbe8f565b6f42f0ccf"
-                  },
-                  {
-                      "path":  "translation/deploy/install_windows.ps1",
-                      "size":  7331,
-                      "sha256":  "c5a2078cd3632e3f02097db87a135d309ab7f2663dd4b1ee5522ac5a47bbaada"
-                  },
-                  {
-                      "path":  "translation/deploy/README.md",
-                      "size":  8258,
-                      "sha256":  "60591b2e8a6ee2b1f754b7a2cdb2a344baee81a7ff221da9a936863f469c11e6"
-                  },
-                  {
-                      "path":  "translation/deploy/requirements-windows.lock.txt",
-                      "size":  2947,
-                      "sha256":  "a3ef7374b2328b73ddab3ea02f0fcf283a9ae6a0a68663beaa28c25ae1396beb"
-                  },
-                  {
-                      "path":  "translation/deploy/runtime_self_check.py",
-                      "size":  11253,
-                      "sha256":  "e0a37e7d0564f4ae9c22d83355f4117e4cba50cd54abe2119b5fd43464130184"
-                  },
-                  {
-                      "path":  "translation/deploy/THIRD_PARTY_NOTICES.txt",
-                      "size":  1083,
-                      "sha256":  "4b82f9af86180b8d3adcd0f481dc89e18266a4690f790c0cf008faf91e12715a"
-                  },
-                  {
-                      "path":  "translation/deploy/upstream.lock.json",
-                      "size":  368,
-                      "sha256":  "5859fb98151cdc54e1fa41395357a2d2e08ede9d5223bed4442f8832f8e6c786"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/__init__.py",
-                      "size":  111,
-                      "sha256":  "d2de4cd18490b8e76451a31215894753fe20678e8895c5c5faa7c0bbf6cea09d"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/bootstrap.py",
-                      "size":  6854,
-                      "sha256":  "2a182062c2c9a43eaff2b0d05f22bef53e16d01f97da097e2e365922568e0168"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/config.py",
-                      "size":  1336,
-                      "sha256":  "bd619cf8144851a9c92fef2ef5dbbcf00748012dec1c2582b0290ee3829325a6"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/ocr.py",
-                      "size":  21261,
-                      "sha256":  "a85d5c2bd655de10dd4f5778a91a12ea69a00f8eba7c66e40cb6d31a9c6e30ed"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/openai_batch_adapter.py",
-                      "size":  18689,
-                      "sha256":  "028c799fcfcbbcc208107d67dd9c11070eb8fadb523e1108919dbef0a1dfcc92"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/output_naming.py",
-                      "size":  15761,
-                      "sha256":  "6cb94666ba13467e42123ab70f9cf9181dc4820ab7aa55fa52a97495319a4ee9"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/preflight.py",
-                      "size":  20239,
-                      "sha256":  "382dbbbce15af52ff8cf682582946e8d8c6dd7ce2672fd7ad3a754b474fd1318"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/PUBLIC_GLOSSARY_PROVENANCE.md",
-                      "size":  2001,
-                      "sha256":  "eaf6ea81a5ab1673ad11d3b8670740926c370aeda10e9ba053612f4a4ebad06c"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/rfq_default_glossary.json",
-                      "size":  6087,
-                      "sha256":  "751c3a858273b31e463a4d0835e1d50a0de145e10a31830847232ebedfe26891"
-                  },
-                  {
-                      "path":  "translation/pdf_runtime/wrapper.py",
-                      "size":  63208,
-                      "sha256":  "9dd79e620e48006d925bcb5e29a3ad551ea163b671b32acdd2260c4631edb596"
-                  },
-                  {
-                      "path":  "translation/rfq_pdf_translation.py",
-                      "size":  234010,
-                      "sha256":  "b295c4db110f8ff96feb1426138fa3988e655234a9e267764ab5d46105098eed"
-                  }
-              ]
+  "schema_version": "1.0",
+  "product": "RFQ Translation Workbench",
+  "version": "0.1.0-alpha.2",
+  "candidate_state": "public_prerelease_ready",
+  "publication_allowed": true,
+  "license": "AGPL-3.0-only",
+  "source_commit": "544c333facdfef94e99583093be7410142d446ac",
+  "source_history_included": false,
+  "embedded_runtime_included": false,
+  "distribution": "source_and_windows_online_bootstrap",
+  "generated_at_utc": "2026-07-22T07:07:53.028334+00:00",
+  "files": [
+    {
+      "path": ".env.example",
+      "size": 271,
+      "sha256": "0a3c501ad3fa82f7b07aa81d26a5ebf477d6507a9c9fa6748811a5c24f0dd933"
+    },
+    {
+      "path": ".gitattributes",
+      "size": 211,
+      "sha256": "76c67d14bcbcc02c777143a22f3bb9f2ee91931adf31ecc253500803d4dca9b7"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 3348,
+      "sha256": "7d4577e4c6c9d8ff53750f14986d1d00fbff41dfbe19bc97a49a72ef59f794fd"
+    },
+    {
+      "path": ".github/workflows/prepare-draft-release.yml",
+      "size": 1286,
+      "sha256": "b06c584774b67a9fd85118043a64e1d5d9ade85dd4854decb3ada743917780b4"
+    },
+    {
+      "path": ".gitignore",
+      "size": 342,
+      "sha256": "7f1a4811d526d459107a0df6f02ce13c4e6157b786a270a41ee477bcf0b2fd47"
+    },
+    {
+      "path": "app/deployment.env.example",
+      "size": 1130,
+      "sha256": "cd97027167864ec178bb1c9ba1b67ffab2aee48bf5239b6bbae0cc837dfed47d"
+    },
+    {
+      "path": "app/requirements.txt",
+      "size": 105,
+      "sha256": "320ca9b07787dea28d9207c0fc9951a9d0ae7c4a98f935504c62204cfef20b90"
+    },
+    {
+      "path": "app/rfq_app/__init__.py",
+      "size": 58,
+      "sha256": "7c95616c05cec8a6bd4ab5a602c4942a473895b049d9d67ad94efd3ebe87db66"
+    },
+    {
+      "path": "app/rfq_app/app_logging.py",
+      "size": 1056,
+      "sha256": "d722f88b3f50691d6a2dbe283f99b7d1075019d3f5aef5a637683124d71ae311"
+    },
+    {
+      "path": "app/rfq_app/archive_service.py",
+      "size": 2178,
+      "sha256": "4a9e9ea584a7bd81dbd459369b9a510f6735c383d1bd87b694f455985abd2a91"
+    },
+    {
+      "path": "app/rfq_app/main.py",
+      "size": 27981,
+      "sha256": "a033026920c787f2709d0db686c2d78251ca25e16bf6de6696ed1b6605f521e6"
+    },
+    {
+      "path": "app/rfq_app/models.py",
+      "size": 7451,
+      "sha256": "14d54590de770932febc153042c1c113cbfe9fe3cb09118537be3b589713e654"
+    },
+    {
+      "path": "app/rfq_app/persistence.py",
+      "size": 1503,
+      "sha256": "97e0b2149319300cd062ce506e450d60f510d89fed0200e58a38f253d03d37fb"
+    },
+    {
+      "path": "app/rfq_app/processing_service.py",
+      "size": 74169,
+      "sha256": "bb5c27360372868b1375445fe52f275dbea9aecc35c419f5e1af74ea571faa56"
+    },
+    {
+      "path": "app/rfq_app/project_service.py",
+      "size": 6479,
+      "sha256": "f702102d2cab506b56efa6ee3994a46e2b79e603fee3459ef9a72a5069f63f69"
+    },
+    {
+      "path": "app/rfq_app/result_service.py",
+      "size": 52483,
+      "sha256": "13dbb5d8d640c437fa1939c3f147f612d38faf2e27b8836cdd9dc631015f481d"
+    },
+    {
+      "path": "app/rfq_app/runtime_config.py",
+      "size": 7676,
+      "sha256": "d5ca436492e4e2a566f3eb1ee376e922aadaf0cd1d8295fabf8c51f7d914dbb8"
+    },
+    {
+      "path": "app/rfq_app/upload_service.py",
+      "size": 5137,
+      "sha256": "dfd48d8bac66a0a979ef26b9aba2dc8075012c02907d2c0c02ec5163e29e12f4"
+    },
+    {
+      "path": "app/static/app.js",
+      "size": 87122,
+      "sha256": "33fc65dc98c9968cf56a811f68ff64e8efddbbf64fca653054286a19138b6e2c"
+    },
+    {
+      "path": "app/static/index.html",
+      "size": 12410,
+      "sha256": "a4dc3557fc58fe9cbb1c3a26f59a9e3b9e1c039a6aafe4a183d5364971560020"
+    },
+    {
+      "path": "app/static/styles.css",
+      "size": 38849,
+      "sha256": "484e8fc7617f7773d58b2e7ceb4e31a44b7333c8785320674077f413da947f10"
+    },
+    {
+      "path": "bootstrap/Install-RFQTranslationWorkbench.ps1",
+      "size": 8528,
+      "sha256": "0f790eeca31cb34583c1477a4bf0ce91c6c8eb8b77f07cd4cafcb890db8018ac"
+    },
+    {
+      "path": "bootstrap/README_FIRST.txt",
+      "size": 530,
+      "sha256": "fa47bd7448f30ce4996dfefd07046cf986d5210696f4e770755df4bfe3d71af8"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size": 1220,
+      "sha256": "65c5127ba7dee1e18e6d7bafb7ae70b15196ead5dbf8b6ea2c6ffd30a032a5bd"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "size": 681,
+      "sha256": "cb3aeaf8ece9459ad381d8f4ce0b93adbfd60fa8ef239bcf8251648ab1b48fea"
+    },
+    {
+      "path": "DATA_HANDLING.md",
+      "size": 1529,
+      "sha256": "fffbdde918f5d00202ad5f576d9e2a234a09d29454719ae015e6ba4426b98897"
+    },
+    {
+      "path": "docs/DATA_AND_EXTERNAL_API.md",
+      "size": 909,
+      "sha256": "bca2653e3dab9887be82e3a6e8f5a0e5fe147decee20e5d4cc63a749f37f834d"
+    },
+    {
+      "path": "docs/INSTALL_WINDOWS.md",
+      "size": 2719,
+      "sha256": "b6ffd984a7d3b3077c22f76b8d385d75198983ba5505ff07fa5a1a4140c431a7"
+    },
+    {
+      "path": "docs/parameter_cards/public_install_layout.txt",
+      "size": 1665,
+      "sha256": "ae393441790aa301229a86709c1b4a0a2a78545fb8e3d0ae0f88d8717ea80ee3"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v0.1.0-alpha.1.md",
+      "size": 852,
+      "sha256": "1523c208e52621211105b112731b3988a087c7fadd01cc4236d031c0c88b71b4"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v0.1.0-alpha.2.md",
+      "size": 1067,
+      "sha256": "646851a23193fd1944ca50be6307c2aa14d32bd7f4612d3d22a61612458924ea"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "size": 1355,
+      "sha256": "e12d4f86c84d10641ada0afb42a806992e4f1dccb246f7c67afa3b7c2087d3cd"
+    },
+    {
+      "path": "docs/UNINSTALL_WINDOWS.md",
+      "size": 622,
+      "sha256": "4a0507ac9b5b55397b81367f5b1043b9aa8e5f091542cab0a07698800b9499d3"
+    },
+    {
+      "path": "docs/VERSIONING.md",
+      "size": 542,
+      "sha256": "6d9f93306445b5ad26009f8afdd717954a0959fd0ed8a5c8353ff4d8d447de1e"
+    },
+    {
+      "path": "docs/一页中文安装说明_v0.1.0-alpha.2.txt",
+      "size": 1712,
+      "sha256": "e8dcb73ebaa92c94a653c162a133e71a751c091fa2120dde24d6dc4d6037c123"
+    },
+    {
+      "path": "Install.cmd",
+      "size": 385,
+      "sha256": "70b4a763a457c174c607076c77ff37ca4b172b1de562c4ae4b2b6f7d19916eb5"
+    },
+    {
+      "path": "LICENSE",
+      "size": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "LICENSE_STATUS.md",
+      "size": 371,
+      "sha256": "59ad75690a217c68003600d0e5337f35a1d5d38a800d87d16679b8686030fab0"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/__init__.py",
+      "size": 207,
+      "sha256": "647103dc99742d88c7ecdad5a41253105bc63f87cab4c3f2c29f45d0a2a236a3"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/api675_extractor.py",
+      "size": 52734,
+      "sha256": "28c8aaf691cd7daef133065f888565cb27b41a701a9deb0b1afd5c7ad8136380"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/centrifugal_datasheet_extractor.py",
+      "size": 25773,
+      "sha256": "d1c9d6961161560fc586a338403dea719fa73732de764b651b51507c1052462f"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/direct_extractor.py",
+      "size": 62556,
+      "sha256": "54eec9e2841ac4f19eec3e1524006c4dd367da537061ab9b768ea897b7cf722e"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/docx_renderer.py",
+      "size": 14864,
+      "sha256": "e0ea3c0b28a39ee3aa66306607809b09941c166c3f3cc9f9121d1127e522fe76"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/engine.py",
+      "size": 33167,
+      "sha256": "c9779c5635e82b213cf97ac035890079729cd3c0e43463f11a3c775e764a89b5"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/pipeline.py",
+      "size": 13371,
+      "sha256": "5118ae3bf133c00afb75d5200fbb55ba0832dce86fb664af9d9a43cf7cf7ddea"
+    },
+    {
+      "path": "parameter_cards/d3_pump_cards/public_template.py",
+      "size": 8069,
+      "sha256": "5cb75db94a8389abf42ca9132297aed6b15914626b068667f82df0517bb26c0b"
+    },
+    {
+      "path": "parameter_cards/run_d3_generation.py",
+      "size": 2667,
+      "sha256": "fe62b591f24464c7d8fb6af7034fe0cc5682b63981da67d6abb7e8b9cad33ad2"
+    },
+    {
+      "path": "parsing/parser.py",
+      "size": 534,
+      "sha256": "09fb90ce6dcbacd1cbb97e20c8bdcc22c9e1d6f8b9b2168e4d0838d69dca3be2"
+    },
+    {
+      "path": "parsing/rfq_text_parser/__init__.py",
+      "size": 46,
+      "sha256": "8c16a6d56221c726e78a78916007cea6c52980c61c1a47105606ba65441f290c"
+    },
+    {
+      "path": "parsing/rfq_text_parser/parser.py",
+      "size": 21047,
+      "sha256": "8c4b455094aa956f3f5bb8736aad0461e50279361a2830d748313025106d6bfd"
+    },
+    {
+      "path": "pipeline/j_trial_pipeline.py",
+      "size": 129037,
+      "sha256": "eb3d0ae82879d10f9832d8b9d5cb57518fe9d24482003069346ed4baecb93816"
+    },
+    {
+      "path": "PRIVACY.md",
+      "size": 1136,
+      "sha256": "3870328ba43752312842390821ea6300338906980bf04bc83a29b8edaed5639b"
+    },
+    {
+      "path": "PUBLIC_SOURCE_MANIFEST.json",
+      "size": 30750,
+      "sha256": "7f97abf1ed7d7253823bc4d6b865d0e6118ddbc6a55631e1cdde8d8f80bacab7"
+    },
+    {
+      "path": "README.md",
+      "size": 3185,
+      "sha256": "f0c7969d76441a59f93293ab1c660c927656ef2c8de05d9c28d72202e80ad2e7"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "size": 2860,
+      "sha256": "1659ef43132ee56b93a2559e123adba22e3fda4c955bc1f8ddbce40440bd308c"
+    },
+    {
+      "path": "reports/f_exporter/__init__.py",
+      "size": 31,
+      "sha256": "daeba110cf16cdac1a958760df7fa62e1b8dfdcf51be4be0a3c5cad775f6bc46"
+    },
+    {
+      "path": "reports/f_exporter/export_model.py",
+      "size": 15472,
+      "sha256": "8c400202ab29bc77287cde1e13c0ab5fe53a924e7661988ffd89070d6c7349ca"
+    },
+    {
+      "path": "reports/f_exporter/export_model_d3.py",
+      "size": 13984,
+      "sha256": "f7b5632377c2a7a33d9a84e4204f9f895b3893522dc5c79ec472aa3f6031f32a"
+    },
+    {
+      "path": "reports/f_exporter/run_export.py",
+      "size": 489,
+      "sha256": "1ac17bd39b9f78a1011819479b56b15f7db790cfe3d0d93f63d08b7436347867"
+    },
+    {
+      "path": "reports/f_exporter/run_export_d3.py",
+      "size": 14919,
+      "sha256": "6c97c957137af152e07cdb8e7ac1f9bf4864ab322bf730aa04b046751d8a76c0"
+    },
+    {
+      "path": "reports/f_exporter/workbook.py",
+      "size": 5851,
+      "sha256": "5d14816a9f4a900e002c9c508fa2e9001949fe5ad1c3a04ef62111ee848e3680"
+    },
+    {
+      "path": "reports/run_export_d3.py",
+      "size": 389,
+      "sha256": "3ad4b91d0a5d060e96ad1cfac13662056bd3c17324676b137be84e91f2ae4c3e"
+    },
+    {
+      "path": "requirements-ci.txt",
+      "size": 233,
+      "sha256": "c6af3891e4a06e38036c23b5263931e64cf1c4d44a6a0b2ba906ef4cb97dbbea"
+    },
+    {
+      "path": "requirements/README.md",
+      "size": 525,
+      "sha256": "6d898a24cd671b6ea7827170fccd3ce584f1a71f69e2c77b2b6ec7baac60c7c9"
+    },
+    {
+      "path": "sbom/rfq-translation-workbench.cdx.json",
+      "size": 165865,
+      "sha256": "e7281d828d9a87f97822817e94de182369941b4a5ef25ecadd862eb2de9961c0"
+    },
+    {
+      "path": "scripts/Common-RFQWorkbench.ps1",
+      "size": 27310,
+      "sha256": "6ba3e6ded86d7dd90bc47da4580c92be98aaeb6c857a5074a9b961d1f72f00b4"
+    },
+    {
+      "path": "scripts/Configure-RFQWorkbench.ps1",
+      "size": 2005,
+      "sha256": "3f324873fdce00cfd5ff8976e4010e0da8ce5d25d4c050de9d7576c5712baaf8"
+    },
+    {
+      "path": "scripts/Get-RFQWorkbenchStatus.ps1",
+      "size": 1397,
+      "sha256": "32058089f9b2b8b202e34d8e9c680c351fb3cfc81f9243aed70f09cfd8c45105"
+    },
+    {
+      "path": "scripts/Install-RFQWorkbench.ps1",
+      "size": 9959,
+      "sha256": "dafd8780e9a09ffbdc13953cb842b181ca77ec6cca825fc80bd7d4068e761c5c"
+    },
+    {
+      "path": "scripts/New-RFQPortableRuntime.ps1",
+      "size": 10119,
+      "sha256": "ea51ffaa6fa9abcd0140f437384bda19272eb24e86411b1216028025c2003027"
+    },
+    {
+      "path": "scripts/public_scan.py",
+      "size": 27250,
+      "sha256": "83750835dadcc29d9fcb6da23e9884bada88379f5a3607b13cafbd76dd8b76f3"
+    },
+    {
+      "path": "scripts/Rollback-RFQWorkbench.ps1",
+      "size": 2536,
+      "sha256": "16f9b814629a994439afa183ce16f1f9f58869ff238efac9e48358db8433b59b"
+    },
+    {
+      "path": "scripts/Start-RFQWorkbench.ps1",
+      "size": 2837,
+      "sha256": "92b516c61eb6ff6040afd85d50d35c4193c4a712c881daff96b74901ac79fb9d"
+    },
+    {
+      "path": "scripts/Stop-RFQWorkbench.ps1",
+      "size": 1611,
+      "sha256": "547fb071c357a52c7e8db085c510e33dbf17c5cb6f14210cce9499504037b25f"
+    },
+    {
+      "path": "scripts/Test-RFQPortableRuntime.ps1",
+      "size": 6747,
+      "sha256": "4103f7dd57f1546618f9fe4cd939dcb6a88c437558b6c97b9c6869d4c9f6e98e"
+    },
+    {
+      "path": "scripts/Uninstall-RFQWorkbench.ps1",
+      "size": 3766,
+      "sha256": "988eab5e59b58b8b6d1d0cda9c3f7f17599fabeb8debed7307fb93970b3c2254"
+    },
+    {
+      "path": "scripts/Update-RFQWorkbench.ps1",
+      "size": 3827,
+      "sha256": "08566aae7efde99e9d9e63670e7c3f761a41814ad0262df4801f60d927213baa"
+    },
+    {
+      "path": "scripts/Watch-RFQWorkbench.ps1",
+      "size": 3210,
+      "sha256": "c118a0396ab75ba636b5b46630f6f5160f5c266666771a01ce83116d935a13c8"
+    },
+    {
+      "path": "SECURITY.md",
+      "size": 1095,
+      "sha256": "a43eb2f6ec4e335c3f83a2b9d130edb0d473414b57ac9fcf2a561186a4cf1c39"
+    },
+    {
+      "path": "templates/pump_parameter_card.docx",
+      "size": 38924,
+      "sha256": "0476ebe2569dfa58ee3a111c35772859d8e33885d84e3648396b7b42b3019fa6"
+    },
+    {
+      "path": "templates/来源权属声明.txt",
+      "size": 624,
+      "sha256": "ef4fb1e146dfe4a87130ee1571b74b389b96d82d64145593a678f5a5fe297f10"
+    },
+    {
+      "path": "templates/模板字段说明.txt",
+      "size": 1435,
+      "sha256": "20a5ecda29c1ab24bcfdd660a0c66e9bd8f922afe1bed536292731dc140ffa4f"
+    },
+    {
+      "path": "tests/app/test_a15_clean_install.py",
+      "size": 4858,
+      "sha256": "24c4d89221d2e4734efb9991df4e04729714d64ef9ef5c5f5558da1979b6ef1b"
+    },
+    {
+      "path": "tests/app/test_a15_runtime_config.py",
+      "size": 5325,
+      "sha256": "f6ed330415b27e2b2db759bddea9f3917d2ac14aa9e832f84e52e956d0ebd4a9"
+    },
+    {
+      "path": "tests/fixtures/parameter_cards/synthetic_regression/合成样例说明.txt",
+      "size": 615,
+      "sha256": "6c647f5febe7d5df674ff06577d1bc0fd31cc780db090aebba6fd1e859f3e3c7"
+    },
+    {
+      "path": "tests/fixtures/parameter_cards/synthetic_regression/系统数据/translation_segments.json",
+      "size": 379,
+      "sha256": "1240623fd8c69fb6d1f6cd38f258fe44d42ccc0f61c67fe19014e8b7f99c0db6"
+    },
+    {
+      "path": "tests/fixtures/parameter_cards/synthetic_regression/系统数据/文本解析结果/parsed_documents.json",
+      "size": 3090,
+      "sha256": "8d0273d447887fdcd9ffb4a27103d3d3f5cc0e4718d366a90e0b8f8261c179e7"
+    },
+    {
+      "path": "tests/parameter_cards/generate_pipeline_evidence.py",
+      "size": 3172,
+      "sha256": "ec38b8f5ababdb7fa8366bd7c1528438c3d48526d180c496f36ed009e955caa2"
+    },
+    {
+      "path": "tests/parameter_cards/generate_template_demo.py",
+      "size": 2158,
+      "sha256": "bce96183619b3078b3d63611f8d8b265d8bf50468c90e6a94a342c409e45007e"
+    },
+    {
+      "path": "tests/parameter_cards/test_direct.py",
+      "size": 20040,
+      "sha256": "fe859297043fe7a549b6b3dd25c6683969e3c421fb8e44784e171bcbaabce216"
+    },
+    {
+      "path": "tests/parameter_cards/test_docx_renderer.py",
+      "size": 6763,
+      "sha256": "5a93ef0c0db774af4bbe1c72724e923c7c2f59ed2b3037c34adb268ca96f0aab"
+    },
+    {
+      "path": "tests/parameter_cards/test_engine.py",
+      "size": 7556,
+      "sha256": "1095e8411032727faf6bb5247134c178b427190b5a5e8e695bd7c55d3459d231"
+    },
+    {
+      "path": "tests/parameter_cards/test_public_generic_extractors.py",
+      "size": 8711,
+      "sha256": "1353eb81b2f225a1e59b1aa488a60064cf3c1bcb95c2236ae4c1163a61c0ff5e"
+    },
+    {
+      "path": "tests/parameter_cards/test_public_install_runner.py",
+      "size": 10180,
+      "sha256": "8fddffcc1448e6211a7d743320a22cc49d6e487745b0937d1e4b3c371de76338"
+    },
+    {
+      "path": "tests/parameter_cards/test_public_template.py",
+      "size": 5944,
+      "sha256": "57e0ed15bbfd7fccf63846fbb45fd73d34fe1bf829425fcab41b7a833da371b9"
+    },
+    {
+      "path": "tests/parameter_cards/test_translation_evidence.py",
+      "size": 22174,
+      "sha256": "327b56decaeed47f16dd6329e2848b499f4a6dc11afffa614ed45e394baa7c96"
+    },
+    {
+      "path": "tests/parsing/test_document_parser.py",
+      "size": 7851,
+      "sha256": "ed64cec40ccb544cbf495e0038e68734c948a717a5a5a5d0cf0de3f57adf3271"
+    },
+    {
+      "path": "tests/translation/test_b10_public_release.py",
+      "size": 15330,
+      "sha256": "b0218a9f18749cf10c28817d4976e9ff5af2f38720c4de41409ad8fbe18bcfd3"
+    },
+    {
+      "path": "tests/translation/test_b11_public_contract.py",
+      "size": 18051,
+      "sha256": "748fca0d3cc09215a09bc7dacc36e66de22b0012a5d6db17b4b370970c6e8d3f"
+    },
+    {
+      "path": "tests/translation/test_b12_pdf_routing.py",
+      "size": 30263,
+      "sha256": "7b8d145c947216372fd60670a5398bfc7b357365985f19ff944acd455084e021"
+    },
+    {
+      "path": "tests/translation/test_b13_output_naming.py",
+      "size": 12252,
+      "sha256": "59c2eba686b5a28d9c61a74482861ba585cc2b819d9833be92fdeeecd88c77e4"
+    },
+    {
+      "path": "tests/translation/test_b13_project_output_contract.py",
+      "size": 14805,
+      "sha256": "85c5f98b52cfb11c4e473bad5f15dac4a7f0faa0ce537727a4e97d0080c40481"
+    },
+    {
+      "path": "tests/translation/test_b8_runtime_security.py",
+      "size": 15462,
+      "sha256": "7bc51e0c9e044880415a0cd36ef7f4e2016dd072ffe1f86eb1dfe7d5e80dc604"
+    },
+    {
+      "path": "tests/translation/test_b9_scanned_pdf_ocr.py",
+      "size": 13916,
+      "sha256": "2c6c5ba382bf2a69e9efadff79be0f8e97b51da92e540e1f03c0547bf8e28b93"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size": 27366,
+      "sha256": "42b5896e326e3e309dcc8d115c94435644681e22f8a3039b2aaaba0be273b9bb"
+    },
+    {
+      "path": "translation/deploy/environment.example",
+      "size": 2805,
+      "sha256": "943ca27b4e7029aab00dc958ab1c92cc5dcce9586748f9dbe8f565b6f42f0ccf"
+    },
+    {
+      "path": "translation/deploy/install_windows.ps1",
+      "size": 7331,
+      "sha256": "c5a2078cd3632e3f02097db87a135d309ab7f2663dd4b1ee5522ac5a47bbaada"
+    },
+    {
+      "path": "translation/deploy/README.md",
+      "size": 8950,
+      "sha256": "c641dee025e40a4f188a562519d142c0e844c5fce34a926a8191562afb8a5f1e"
+    },
+    {
+      "path": "translation/deploy/requirements-public-tests.lock.txt",
+      "size": 328,
+      "sha256": "550ed99af7f8c32cc4db5f280bb0e41782bd20074e9a19437fea9a393507456f"
+    },
+    {
+      "path": "translation/deploy/requirements-windows.lock.txt",
+      "size": 2947,
+      "sha256": "a3ef7374b2328b73ddab3ea02f0fcf283a9ae6a0a68663beaa28c25ae1396beb"
+    },
+    {
+      "path": "translation/deploy/runtime_self_check.py",
+      "size": 11253,
+      "sha256": "e0a37e7d0564f4ae9c22d83355f4117e4cba50cd54abe2119b5fd43464130184"
+    },
+    {
+      "path": "translation/deploy/THIRD_PARTY_NOTICES.txt",
+      "size": 1083,
+      "sha256": "4b82f9af86180b8d3adcd0f481dc89e18266a4690f790c0cf008faf91e12715a"
+    },
+    {
+      "path": "translation/deploy/upstream.lock.json",
+      "size": 368,
+      "sha256": "5859fb98151cdc54e1fa41395357a2d2e08ede9d5223bed4442f8832f8e6c786"
+    },
+    {
+      "path": "translation/pdf_runtime/__init__.py",
+      "size": 111,
+      "sha256": "d2de4cd18490b8e76451a31215894753fe20678e8895c5c5faa7c0bbf6cea09d"
+    },
+    {
+      "path": "translation/pdf_runtime/bootstrap.py",
+      "size": 6854,
+      "sha256": "2a182062c2c9a43eaff2b0d05f22bef53e16d01f97da097e2e365922568e0168"
+    },
+    {
+      "path": "translation/pdf_runtime/config.py",
+      "size": 1336,
+      "sha256": "bd619cf8144851a9c92fef2ef5dbbcf00748012dec1c2582b0290ee3829325a6"
+    },
+    {
+      "path": "translation/pdf_runtime/ocr.py",
+      "size": 21261,
+      "sha256": "a85d5c2bd655de10dd4f5778a91a12ea69a00f8eba7c66e40cb6d31a9c6e30ed"
+    },
+    {
+      "path": "translation/pdf_runtime/openai_batch_adapter.py",
+      "size": 18689,
+      "sha256": "028c799fcfcbbcc208107d67dd9c11070eb8fadb523e1108919dbef0a1dfcc92"
+    },
+    {
+      "path": "translation/pdf_runtime/output_naming.py",
+      "size": 15761,
+      "sha256": "6cb94666ba13467e42123ab70f9cf9181dc4820ab7aa55fa52a97495319a4ee9"
+    },
+    {
+      "path": "translation/pdf_runtime/preflight.py",
+      "size": 20239,
+      "sha256": "382dbbbce15af52ff8cf682582946e8d8c6dd7ce2672fd7ad3a754b474fd1318"
+    },
+    {
+      "path": "translation/pdf_runtime/PUBLIC_GLOSSARY_PROVENANCE.md",
+      "size": 2001,
+      "sha256": "eaf6ea81a5ab1673ad11d3b8670740926c370aeda10e9ba053612f4a4ebad06c"
+    },
+    {
+      "path": "translation/pdf_runtime/rfq_default_glossary.json",
+      "size": 6087,
+      "sha256": "751c3a858273b31e463a4d0835e1d50a0de145e10a31830847232ebedfe26891"
+    },
+    {
+      "path": "translation/pdf_runtime/wrapper.py",
+      "size": 63208,
+      "sha256": "9dd79e620e48006d925bcb5e29a3ad551ea163b671b32acdd2260c4631edb596"
+    },
+    {
+      "path": "translation/rfq_pdf_translation.py",
+      "size": 234010,
+      "sha256": "b295c4db110f8ff96feb1426138fa3988e655234a9e267764ab5d46105098eed"
+    }
+  ]
 }

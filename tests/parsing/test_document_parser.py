@@ -71,7 +71,7 @@ trailer << /Root 1 0 R >>
 
 class DocumentParserTests(unittest.TestCase):
     def make_project(self, tmp: Path) -> Path:
-        package = tmp / "项目_测试客户_RFQ_001"
+        package = tmp / "SYN-TEST-RFQ-001"
         (package / "01_原始询价文件").mkdir(parents=True)
         (package / "系统数据").mkdir()
         return package

@@ -46,12 +46,25 @@ jobs:
           } finally {
             $sha256.Dispose()
           }
-          if ($reviewKeys.Count -ne 29 -or $reviewHash -ne "892871994007311664bc7f62d98897a3955a7425e35b282963d1b1fe9d40dfb3") {
-            throw "Public-source review findings differ from the approved K11 baseline."
+          $k12ApprovedReview = @(
+            $result.findings |
+              Where-Object {
+                $_.severity -eq "review" -and
+                $_.rule -eq "business_context_literal" -and
+                $_.path -eq "tests/translation/test_b10_public_release.py" -and
+                [int]$_.line -eq 194 -and
+                $_.match_fingerprint -eq "25ed13bea51e0ba5"
+              }
+          )
+          if ($k12ApprovedReview.Count -ne 1) {
+            throw "The exact K12 synthetic glossary review fingerprint is missing or duplicated."
+          }
+          if ($reviewKeys.Count -ne 30 -or $reviewHash -ne "2c5c4e77d74d4963cd7ad33ab31cfee321c17b870487d870b82d39281ceb45fc") {
+            throw "Public-source review findings differ from the approved K12 baseline."
           }
           exit 0
       - name: Install CI dependencies
-        run: python -m pip install -r requirements-ci.txt pdfplumber==0.11.9
+        run: python -m pip install -r requirements-ci.txt -r translation/deploy/requirements-public-tests.lock.txt
       - name: Compile Python sources
         run: python -m compileall -q app pipeline translation parsing parameter_cards reports scripts tests
       - name: Contract tests without external API

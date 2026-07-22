@@ -18,7 +18,19 @@ import rfq_pdf_translation as engine
 from pdf_runtime import wrapper
 
 
-MODULE_ROOT = Path(__file__).resolve().parents[1]
+def locate_module_root() -> Path:
+    test_path = Path(__file__).resolve()
+    candidates = (
+        test_path.parents[1],
+        test_path.parents[2] / "translation",
+    )
+    for candidate in candidates:
+        if (candidate / "rfq_pdf_translation.py").is_file():
+            return candidate
+    raise RuntimeError("无法定位公开翻译入口 translation/rfq_pdf_translation.py")
+
+
+MODULE_ROOT = locate_module_root()
 ENGINE_PATH = MODULE_ROOT / "rfq_pdf_translation.py"
 
 
@@ -57,6 +69,19 @@ def failed_wrapper_manifest(*, scanned: bool) -> dict:
 
 
 class B10PublicReleaseTests(unittest.TestCase):
+    def test_public_test_dependency_lock_pins_numpy_to_runtime_version(self) -> None:
+        deploy_dir = MODULE_ROOT / "deploy"
+        public_lock = (deploy_dir / "requirements-public-tests.lock.txt").read_text(
+            encoding="utf-8"
+        )
+        runtime_lock = (deploy_dir / "requirements-windows.lock.txt").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("numpy==2.5.1", public_lock.splitlines())
+        self.assertIn("numpy==2.5.1", runtime_lock.splitlines())
+        self.assertNotRegex(public_lock, r"(?im)^\s*(?:-e\s+|file:|[A-Z]:[\\/])")
+
     def test_cli_without_project_package_returns_chinese_structured_error(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             workdir = Path(tmp)
@@ -67,18 +92,18 @@ class B10PublicReleaseTests(unittest.TestCase):
                 cwd=workdir,
                 env=environment,
                 capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
                 timeout=30,
                 check=False,
             )
             created_files = [path for path in workdir.rglob("*") if path.is_file()]
 
+        stdout = completed.stdout.decode("utf-8", errors="strict")
+        stderr = completed.stderr.decode("utf-8", errors="strict")
         self.assertEqual(completed.returncode, 2)
-        self.assertEqual(completed.stdout.strip(), "")
+        self.assertEqual(stdout.strip(), "")
         self.assertEqual(created_files, [])
-        payload = json.loads(completed.stderr.strip().splitlines()[-1])
+        self.assertNotIn("\ufffd", stderr)
+        payload = json.loads(stderr.strip().splitlines()[-1])
         self.assertEqual(payload["status"], "blocked")
         self.assertEqual(payload["error_code"], "project_package_required")
         self.assertRegex(payload["error_summary"], r"[\u4e00-\u9fff]")
@@ -166,13 +191,18 @@ class B10PublicReleaseTests(unittest.TestCase):
             self.assertIn("***", redacted)
 
             log_path = output_dir / "runtime.log"
+            synthetic_location = "TEST-GLOSSARY-LOCATION/local_terms.csv"
             log_path.write_text(
-                f"path={private_path}\nsource={source_term}\ntarget={target_term}",
+                f"path={synthetic_location}\nsource={source_term}\ntarget={target_term}",
                 encoding="utf-8",
             )
-            wrapper.sanitize_private_glossary_log(log_path, sensitive_values)
+            self.assertIn(str(private_path), sensitive_values)
+            wrapper.sanitize_private_glossary_log(
+                log_path,
+                [synthetic_location, *sensitive_values],
+            )
             sanitized_log = log_path.read_text(encoding="utf-8")
-            for sensitive in (str(private_path), source_term, target_term):
+            for sensitive in (synthetic_location, str(private_path), source_term, target_term):
                 self.assertNotIn(sensitive, sanitized_log)
             self.assertIn("[PRIVATE_GLOSSARY_REDACTED]", sanitized_log)
 

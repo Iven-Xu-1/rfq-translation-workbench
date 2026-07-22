@@ -6,7 +6,7 @@ param(
     [string]$ConfigRoot = "$env:LOCALAPPDATA\RFQTranslationTool\Config",
     [string]$ShortcutRoot = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\RFQ Translation Workbench",
     [int]$Port = 8008,
-    [string]$Version = "0.1.0-alpha.1",
+    [string]$Version = "0.1.0-alpha.2",
     [switch]$NoShortcuts,
     [switch]$AcceptThirdPartyDownloads
 )
@@ -120,7 +120,7 @@ try {
     }
     $manifest = [ordered]@{
         schema_version = '1.0'; product = 'RFQ Translation Workbench'; version = $Version
-        source_commit = '2fd513ede64445145e7177ff24a5531606b807c0'
+        source_commit = '544c333facdfef94e99583093be7410142d446ac'
         distribution = 'windows-online-bootstrap'; runtime_layout = 'local_venv'; python = $detected
         requirements_lock_sha256 = Get-Sha256 $sourceLock; pdf2zh_source_sha256 = $Pdf2zhSha256
         files = @($manifestFiles | Sort-Object path)

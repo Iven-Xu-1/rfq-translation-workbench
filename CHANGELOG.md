@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.0-alpha.2
+
+- Made the public C, D3, and B contract tests independent of internal thread paths and Windows short-path aliases.
+- Added an exact public-test dependency lock, including `numpy==2.5.1`, and made GitHub Actions install only reviewed fixed versions.
+- Retained the loopback-only Windows online-bootstrap design and the same business runtime algorithms as Alpha 1.
+
 ## v0.1.0-alpha.1
 
 - First public Windows-local alpha candidate.

@@ -16,13 +16,36 @@ from reportlab.pdfgen import canvas
 import rfq_pdf_translation as engine
 
 
-MODULE_ROOT = Path(__file__).resolve().parents[1]
+def locate_module_root() -> Path:
+    test_path = Path(__file__).resolve()
+    candidates = (
+        test_path.parents[1],
+        test_path.parents[2] / "translation",
+    )
+    for candidate in candidates:
+        if (candidate / "rfq_pdf_translation.py").is_file():
+            return candidate
+    raise RuntimeError("无法定位公开翻译入口 translation/rfq_pdf_translation.py")
+
+
+MODULE_ROOT = locate_module_root()
+TEST_ROOT = Path(__file__).resolve().parent
 ENGINE_PATH = MODULE_ROOT / "rfq_pdf_translation.py"
 PUBLIC_PYTHON_PATHS = tuple(
-    path
-    for path in MODULE_ROOT.rglob("*.py")
-    if "__pycache__" not in path.parts
+    dict.fromkeys(
+        path.resolve()
+        for root in (MODULE_ROOT, TEST_ROOT)
+        for path in root.rglob("*.py")
+        if "__pycache__" not in path.parts
+    )
 )
+
+
+def owned_relative_path(path: Path) -> Path:
+    try:
+        return path.relative_to(MODULE_ROOT)
+    except ValueError:
+        return Path("tests") / path.relative_to(TEST_ROOT)
 
 
 def static_value(node: ast.AST, bindings: dict[str, object]) -> object | None:
@@ -193,7 +216,7 @@ class B11PublicContractTests(unittest.TestCase):
         for path in PUBLIC_PYTHON_PATHS:
             source = path.read_text(encoding="utf-8-sig")
             for line in literal_long_sentence_pairs(source):
-                violations.append(f"{path.relative_to(MODULE_ROOT)}:{line}")
+                violations.append(f"{owned_relative_path(path)}:{line}")
         self.assertEqual(violations, [])
 
     def test_public_python_sources_use_only_safe_identifiers_and_paths(self) -> None:

@@ -5,6 +5,7 @@
 ## 文件
 
 - `requirements-windows.lock.txt`：CPython 3.12 x64 固定依赖；`pdf2zh-next` 固定到上游提交 `3538a8195d8379fe3fb4a0117c88d15c5b7b5e89`。
+- `requirements-public-tests.lock.txt`：公开仓库 B 合同测试的最小固定依赖；K/CI 应直接安装或逐项合并，不能依赖 Runner 预装包。
 - `upstream.lock.json`：上游仓库、提交、版本和许可证口径。
 - `THIRD_PARTY_NOTICES.txt`：第三方许可证提示；公司范围部署前需完成内部合规复核。
 - `install_windows.ps1`：默认在当前用户 `%LOCALAPPDATA%\RFQTranslationTool\BRuntime\.venv` 创建运行时、安装固定依赖并运行自检。
@@ -97,6 +98,16 @@ python .\runtime_self_check.py --syntax-only
 ```
 
 `syntax-only` 不能证明固定依赖可安装，也不能替代 B8-4 的干净 checkout 混合格式回归。
+
+公开仓库在 Windows Runner 上执行 B 合同测试前，应安装固定测试依赖并把公开 `translation` 目录加入 `PYTHONPATH`：
+
+```powershell
+python -m pip install -r translation\deploy\requirements-public-tests.lock.txt
+$env:PYTHONPATH = (Resolve-Path .\translation)
+python -m unittest discover -s tests\translation -p "test_b*.py" -v
+```
+
+其中 OCR 合成测试明确依赖 `numpy==2.5.1`。这些测试只使用本地 Fake/合成 PDF，不需要 API Key，不调用翻译服务，也不下载 OCR 模型。
 
 ## 已验证边界
 

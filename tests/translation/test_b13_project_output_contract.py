@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -9,7 +10,25 @@ from unittest.mock import patch
 import rfq_pdf_translation as engine
 
 
+def windows_short_path_alias(path: Path) -> Path:
+    if os.name != "nt":
+        return path
+    import ctypes
+
+    buffer = ctypes.create_unicode_buffer(32768)
+    length = ctypes.windll.kernel32.GetShortPathNameW(str(path), buffer, len(buffer))
+    return Path(buffer.value) if 0 < length < len(buffer) else path
+
+
 class B13ProjectOutputContractTests(unittest.TestCase):
+    def test_windows_short_and_long_paths_use_same_filesystem_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp) / "SYNTHETIC_PATH_IDENTITY"
+            directory.mkdir()
+            alias = windows_short_path_alias(directory)
+
+            self.assertTrue(os.path.samefile(alias, directory))
+
     def prepare_superseded_pdf(self, root: Path) -> tuple[Path, Path, Path, Path]:
         package = root / "SYNTHETIC_B13_FAILURE_GUARD"
         source = package / engine.PROJECT_SOURCE_DIRNAME / "drawing.pdf"
@@ -302,9 +321,11 @@ class B13ProjectOutputContractTests(unittest.TestCase):
                 if item["source_relative_path"].endswith("nested/drawing.pdf")
             )
             self.assertEqual(nested_entry["display_relative_path"], "nested/drawing-译.pdf")
-            self.assertEqual(
-                Path(nested_entry["output_path"]).parent,
-                package / engine.PROJECT_TRANSLATED_DIRNAME / "nested",
+            actual_parent = Path(nested_entry["output_path"]).parent
+            expected_parent = package / engine.PROJECT_TRANSLATED_DIRNAME / "nested"
+            self.assertTrue(
+                os.path.samefile(actual_parent, expected_parent),
+                f"输出目录不是同一文件系统位置：{actual_parent} != {expected_parent}",
             )
 
             persisted = json.loads(

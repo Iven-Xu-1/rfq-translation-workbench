@@ -15,7 +15,7 @@
 2. Calculate the ZIP SHA-256 in PowerShell:
 
    ```powershell
-   Get-FileHash .\rfq-translation-workbench-v0.1.0-alpha.1-windows-online-bootstrap.zip -Algorithm SHA256
+   Get-FileHash .\rfq-translation-workbench-v0.1.0-alpha.2-windows-online-bootstrap.zip -Algorithm SHA256
    ```
 
 3. Compare the value exactly with `SHA256SUMS.txt`.
