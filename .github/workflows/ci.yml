@@ -17,12 +17,41 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - name: Public-source scan from clean archive
+        shell: pwsh
+        run: |
+          $archive = Join-Path $env:RUNNER_TEMP "rfq-public-source.zip"
+          $scanRoot = Join-Path $env:RUNNER_TEMP "rfq-public-source"
+          $scanReport = Join-Path $env:RUNNER_TEMP "rfq-public-scan.json"
+          git archive --format=zip --output=$archive HEAD
+          New-Item -ItemType Directory -Path $scanRoot | Out-Null
+          tar -xf $archive -C $scanRoot
+          python (Join-Path $scanRoot "scripts/public_scan.py") $scanRoot --output $scanReport
+          $scannerExit = $LASTEXITCODE
+          $result = Get-Content -LiteralPath $scanReport -Raw -Encoding UTF8 | ConvertFrom-Json
+          if ($scannerExit -gt 1 -or [int]$result.block_count -ne 0) {
+            throw "Public-source scan contains blocking findings."
+          }
+          $reviewKeys = @(
+            $result.findings |
+              Where-Object severity -eq "review" |
+              ForEach-Object { "{0}|{1}|{2}" -f $_.rule, $_.path, $_.line } |
+              Sort-Object
+          )
+          $reviewText = $reviewKeys -join "`n"
+          $sha256 = [Security.Cryptography.SHA256]::Create()
+          try {
+            $reviewHash = -join ($sha256.ComputeHash([Text.Encoding]::UTF8.GetBytes($reviewText)) | ForEach-Object { $_.ToString("x2") })
+          } finally {
+            $sha256.Dispose()
+          }
+          if ($reviewKeys.Count -ne 29 -or $reviewHash -ne "892871994007311664bc7f62d98897a3955a7425e35b282963d1b1fe9d40dfb3") {
+            throw "Public-source review findings differ from the approved K11 baseline."
+          }
       - name: Install CI dependencies
         run: python -m pip install -r requirements-ci.txt
       - name: Compile Python sources
         run: python -m compileall -q app pipeline translation parsing parameter_cards reports scripts tests
-      - name: Public-source scan
-        run: python scripts/public_scan.py .
       - name: Contract tests without external API
         env:
           RFQ_DISABLE_EXTERNAL_API: "1"
