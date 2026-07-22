@@ -26,6 +26,7 @@ jobs:
           git archive --format=zip --output=$archive HEAD
           New-Item -ItemType Directory -Path $scanRoot | Out-Null
           tar -xf $archive -C $scanRoot
+          $PSNativeCommandUseErrorActionPreference = $false
           python (Join-Path $scanRoot "scripts/public_scan.py") $scanRoot --output $scanReport
           $scannerExit = $LASTEXITCODE
           $result = Get-Content -LiteralPath $scanReport -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -48,6 +49,7 @@ jobs:
           if ($reviewKeys.Count -ne 29 -or $reviewHash -ne "892871994007311664bc7f62d98897a3955a7425e35b282963d1b1fe9d40dfb3") {
             throw "Public-source review findings differ from the approved K11 baseline."
           }
+          exit 0
       - name: Install CI dependencies
         run: python -m pip install -r requirements-ci.txt
       - name: Compile Python sources
