@@ -70,6 +70,11 @@ jobs:
       - name: Contract tests without external API
         env:
           RFQ_DISABLE_EXTERNAL_API: "1"
+          # GitHub's default Windows TEMP may use an 8.3 alias (RUNNER~1), while
+          # Path.resolve() returns the long form. Use the canonical runner temp
+          # root so path-redaction contracts compare one stable local spelling.
+          TEMP: ${{ runner.temp }}
+          TMP: ${{ runner.temp }}
           PYTHONPATH: ${{ github.workspace }}\app;${{ github.workspace }}\pipeline;${{ github.workspace }}\translation;${{ github.workspace }}\parsing;${{ github.workspace }}\parameter_cards;${{ github.workspace }}\reports
         run: python -m pytest -q -p no:cacheprovider
       - name: Check static JavaScript syntax

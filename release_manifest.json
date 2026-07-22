@@ -9,7 +9,7 @@
   "source_history_included": false,
   "embedded_runtime_included": false,
   "distribution": "source_and_windows_online_bootstrap",
-  "generated_at_utc": "2026-07-22T07:07:53.028334+00:00",
+  "generated_at_utc": "2026-07-22T07:13:40.347466+00:00",
   "files": [
     {
       "path": ".env.example",
@@ -23,8 +23,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "size": 3348,
-      "sha256": "7d4577e4c6c9d8ff53750f14986d1d00fbff41dfbe19bc97a49a72ef59f794fd"
+      "size": 3658,
+      "sha256": "31642afa910f8c01700fdf4c468c77a301759f1868caf8c8c91ae452de47ec72"
     },
     {
       "path": ".github/workflows/prepare-draft-release.yml",
@@ -334,7 +334,7 @@
     {
       "path": "sbom/rfq-translation-workbench.cdx.json",
       "size": 165865,
-      "sha256": "e7281d828d9a87f97822817e94de182369941b4a5ef25ecadd862eb2de9961c0"
+      "sha256": "57c0f4731c58f2fc6e7a7060b690103d90b4afda6b5ca4a82f79a2af98b6edfb"
     },
     {
       "path": "scripts/Common-RFQWorkbench.ps1",
